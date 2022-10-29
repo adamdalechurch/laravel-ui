@@ -22,6 +22,22 @@
                 <span>My Groups</span>
             </router-link>
         </li>
+
+        <!-- Nav Item - Pages Collapse Menu-->
+            <li class="nav-item">
+            <router-link to="/projects" class="nav-link">
+                <i class="fas fa-fw fa-edit"></i>
+                <span>My Projects</span>
+            </router-link>
+        </li>
+
+        <!-- Nav Item - Pages Collapse Menu-->
+            <li class="nav-item">
+            <router-link to="/tasks" class="nav-link">
+                <i class="fas fa-fw fa-check-circle"></i>
+                <span>My Tasks</span>
+            </router-link>
+        </li>
     </ul>
 </template>
 <script>
