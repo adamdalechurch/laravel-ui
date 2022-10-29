@@ -21,7 +21,7 @@
     <link href="{{env("APP_URL")}}/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body id="page-top">
     <div id="app">
         @yield('content')
     </div>

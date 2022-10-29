@@ -8,21 +8,21 @@
             </div>
             <div class="sidebar-brand-text mx-3">PROJENY</div>
         </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            My Stuff
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu-->
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fas fa-fw fa-users"></i>
+                <span>My Groups</span>
+            </a>
+        </li>
     </ul>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        My Stuff
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu-->
-    <li class="nav-item {{$my_groups_active}}">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-users"></i>
-            <span>My Groups</span>
-        </a>
-    </li>
 </template>

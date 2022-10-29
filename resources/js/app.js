@@ -23,6 +23,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('app', require('./components/layout/App.vue').default);
+Vue.component('navigation', require('./components/layout/Navigation.vue').default);
+
 Vue.use(VueRouter)
 
 const Foo = { template: '<div>foo</div>' }
