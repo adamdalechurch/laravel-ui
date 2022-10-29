@@ -19,10 +19,17 @@
 
         <!-- Nav Item - Pages Collapse Menu-->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <router-link to="/groups" class="nav-link">
                 <i class="fas fa-fw fa-users"></i>
                 <span>My Groups</span>
-            </a>
+            </router-link>
         </li>
     </ul>
 </template>
+<script>
+    export default {
+        mounted() {
+            console.log('Component mounted.')
+        }
+    }
+</script>
