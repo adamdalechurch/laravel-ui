@@ -5323,81 +5323,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-function getDashboardData() {
-  return _getDashboardData.apply(this, arguments);
-}
-function _getDashboardData() {
-  _getDashboardData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var res;
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return axios.get('/api/dashboard', {
-              params: {}
-            });
-          case 2:
-            res = _context2.sent;
-            console.log(res);
-          case 4:
-          case "end":
-            return _context2.stop();
-        }
-      }
-    }, _callee2);
-  }));
-  return _getDashboardData.apply(this, arguments);
-}
-;
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Dashboard",
   data: function data() {
     return {
-      dashboard: {}
+      dashboard: {
+        open_tasks: 0
+      }
     };
   },
   created: function created() {
-    getDashboardData();
-  },
-  methods: {
-    getDashboardData: function getDashboardData() {
-      // const res = await fetch(`api/dashboard`)
-      // .then(response => {
-      //     console.log(response);
-      // })
-
-      // if (!res.ok) {
-      //   const message = `An error has occured: ${res.status} - ${res.statusText}`;
-      //   throw new Error(message);
-      // }
-
-      // const data = await res.json();
-
-      // const result = {
-      //   status: res.status + "-" + res.statusText,
-      //   headers: {
-      //     "Content-Type": res.headers.get("Content-Type"),
-      //     "Content-Length": res.headers.get("Content-Length"),
-      //   },
-      //   length: res.headers.get("Content-Length"),
-      //   data: data,
-      // };
-
-      // this.getResult = this.fortmatResponse(result);
-      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-              case "end":
-                return _context.stop();
-            }
+    var _this = this;
+    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              axios.get('/api/dashboard').then(function (response) {
+                return _this.dashboard = response.data;
+              });
+            case 1:
+            case "end":
+              return _context.stop();
           }
-        }, _callee);
-      }))();
-    }
-  }
+        }
+      }, _callee);
+    }))();
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -28933,7 +28887,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Dashboard    \n")])
+  return _c("div", [
+    _vm._v("\n    Dashboard " + _vm._s(_vm.dashboard.open_tasks) + "\n"),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
