@@ -2,7 +2,7 @@
   <div>
     <div class="row">
       <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-4 mb-4">
+      <!-- <div class="col-xl-4 mb-4">
           <div class="card border-left-primary shadow h-100 py-2">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -18,7 +18,8 @@
                   </div>
               </div>
           </div>
-      </div>
+      </div> -->
+      <top-box colorClass='primary' title='Open Projects' iconClass="fa-edit" :bodyText="dashboard.open_projects"></top-box>
 
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-4 mb-4">
@@ -137,7 +138,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Dashboard",
   data() {

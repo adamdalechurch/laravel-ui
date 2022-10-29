@@ -33,6 +33,12 @@ Vue.component('my-projects', require('./components/projects/MyProjects.vue').def
 Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
 Vue.component('profile', require('./components/profile/Profile.vue').default);
 
+// COMMMON
+Vue.component('top-box', require('./components/dashboard/TopBox.vue').default);
+
+
+
+
 Vue.use(VueRouter)
 
 const routes = [
