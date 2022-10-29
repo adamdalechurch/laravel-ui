@@ -22,18 +22,19 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// LAYOUT:
 Vue.component('app', require('./components/layout/App.vue').default);
 Vue.component('navigation', require('./components/layout/Navigation.vue').default);
 
+// PAGES:
+Vue.component('dashboard', require('./components/dashboard/Dashboard.vue').default);
+Vue.component('my-groups', require('./components/groups/MyGroups.vue').default);
+
 Vue.use(VueRouter)
 
-const Foo = { template: '<div>foo</div>' }
-const Bar = { template: '<div>bar</div>' }
-
-
 const routes = [
-  { path: '/groups', component: Foo },
-  { path: '/bar', component: Bar }
+  { path: '/', component: { template: '<dashboard />' } },
+  { path: '/groups', component: { template: '<my-groups />' } },
 ]
 
 const router = new VueRouter({
