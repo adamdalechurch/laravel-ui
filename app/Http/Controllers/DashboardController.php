@@ -14,7 +14,7 @@ class DashboardController extends Controller
      * 
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function get()
     {
         $user          = Auth::user();
         $projects      = Project::whereIn('group_id', $user->groups->pluck('id'))->get();
@@ -26,7 +26,13 @@ class DashboardController extends Controller
         foreach($open_projects as $project)
             $progress += $project->progress_percent() / $open_projects->count();
             
-        return view('dashboard', [
+        // return view('dashboard', [
+        //     'user'          => $user,
+        //     'open_projects' => $open_projects,
+        //     'open_tasks'    => $open_tasks,
+        //     'progress'      => $progress
+        // ]);
+        return response()->json([
             'user'          => $user,
             'open_projects' => $open_projects,
             'open_tasks'    => $open_tasks,
