@@ -26,17 +26,12 @@
 <script>
 
 export default {
-  updated: false,
   name: "Top Box",
   props: {
     title: 'title',
     colorClass: 'primary',
     body: null,
     iconClass: 'fa-edit'
-  },
-
-  updated(){
-    this.updated = true;
   }
 }
 </script>
