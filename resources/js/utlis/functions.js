@@ -5,7 +5,6 @@ export const CalcPercent = (total, portion, decimalPlaces = 2) =>
 
 export const CalcProgressPercent = (items) =>
 {
-    console.log(GetOpenItems(items));
     return CalcPercent(items.length, GetOpenItems(items).length, 0);
 }
 

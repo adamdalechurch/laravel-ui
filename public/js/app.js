@@ -6007,7 +6007,6 @@ var CalcPercent = function CalcPercent(total, portion) {
   return (portion / total * 100).toFixed(decimalPlaces);
 };
 var CalcProgressPercent = function CalcProgressPercent(items) {
-  console.log(GetOpenItems(items));
   return CalcPercent(items.length, GetOpenItems(items).length, 0);
 };
 var GetCompletedItems = function GetCompletedItems(items) {
