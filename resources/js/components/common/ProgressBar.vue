@@ -16,7 +16,7 @@
 <script>
 
 export default {
-    name: "Progress Bar",
+    name: "ProgressBar",
     props: {
     title: 'title',
     colorClass: 'primary',

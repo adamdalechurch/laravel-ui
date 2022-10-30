@@ -1,7 +1,7 @@
 <template>
     <ul>
         <li :key="group.id" v-for="group in groups">
-            <router-link  :to="['/groups/', group.id]">
+            <router-link  :to="`/groups/${ group.id}`">
                 {{group.name}}
             </router-link>
         </li>
@@ -10,7 +10,7 @@
 <script>
 
 export default {
-    name: "Groups List",
+    name: "GroupsList",
     props: {
         groups: []
     }

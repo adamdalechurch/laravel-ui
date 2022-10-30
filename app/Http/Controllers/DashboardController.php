@@ -37,7 +37,7 @@ class DashboardController extends Controller
         
         return response()->json([
             'user'                => $user,
-            'open_projects'       => $open_projects->get(),
+            'open_projects'       => $open_projects->with('tasks')->get(),
             'open_projects_count' => $open_projects->count(),
             'open_tasks'          => $open_tasks->get(),
             'open_tasks_count'    => $open_tasks->count(),

@@ -1,6 +1,6 @@
 <template>
 <div class="col-xl-4 mb-4">
-        <div :class="[`border-left-${colorClass}`, 'card shadow h-100 py-2']">
+        <div :class="`border-left-${colorClass} card shadow h-100 py-2`">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
@@ -26,12 +26,12 @@
 <script>
 
 export default {
-  name: "Top Box",
+  name: "TopBox",
   props: {
-    title: 'title',
-    colorClass: 'primary',
+    title: null,
+    colorClass: null,
     body: null,
-    iconClass: 'fa-edit'
+    iconClass: null
   }
 }
 </script>

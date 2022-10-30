@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="row">
-      <top-box colorClass='primary' title='Open Projects' iconClass="fa-edit" :body="dashboard.open_projects_count"></top-box>
-      <top-box colorClass='success' title='Open Tasks' iconClass="fa-check-circle" :body="dashboard.open_tasks_count"></top-box>
-      <top-box colorClass='info' title='Progress' iconClass="fa-clipboard-list" body="">
+      <top-box colorClass='primary' title='Open Projects' iconClass='fa-edit' :body="dashboard.open_projects_count"></top-box>
+      <top-box colorClass='success' title='Open Tasks' iconClass="`fa-check-circle`" :body="dashboard.open_tasks_count"></top-box>
+      <top-box colorClass='info' title='Progress' iconClass="`fa-clipboard-list`" body=""> 
         <progress-bar :percent="dashboard.progress" />
       </top-box>
     </div>
@@ -66,23 +66,26 @@
               <!-- Card Body -->
               <div class="card-body"> 
                   <div class="chart-area">
-                      <!-- @foreach($open_projects as $project)
-                      <h4 class="small font-weight-bold">{{$project->name}}<span
-                              class="float-right">{{$project->progress_percent()}}%</span></h4>
-                      <div class="progress mb-4">
-                          <div class="progress-bar bg-success" role="progressbar" style="width: {{$project->progress_percent()}}%"
-                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div v-for="project in dashboard.open_projects" >
+                      <h4 class="small font-weight-bold">{{project.name}}<span
+                              class="float-right">{{CalcProgressPercent(project.tasks)}}%</span></h4>
+                          <div class="progress mb-4">
+                              <div class="progress-bar bg-success" role="progressbar" :style="{width: CalcProgressPercent(project.tasks) + '%'}"
+                                  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
                       </div>
-                      @endforeach -->
-                  </div>
+                    </div>
               </div>
           </div>
-      </div>
+      </div> 
       </div>
   </div>
 </template>
 
 <script>
+import {
+  CalcProgressPercent,
+} from '../../utlis/functions'
 export default {
   name: "Dashboard",
   data() {
@@ -91,22 +94,23 @@ export default {
         open_tasks: [],
         open_projects: [],
         open_tasks: [],
-        pen_tasks_count: null,
+        open_tasks_count: null,
         open_projects_count: null,
         open_tasks_count: null,
-        progress: 0
+        progress: 0,
+        user: {}
       }
     }
+  },
+  methods: {
+    CalcProgressPercent: CalcProgressPercent
   },
   async created(){
     axios
       .get('/api/dashboard')
       .then(response => {
-        this.dashboard = response.data
+        this.dashboard = response.data;
       })
-  },
-  methods: {
-
   }
 }
 </script>
