@@ -34,6 +34,7 @@ Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
 Vue.component('profile', require('./components/profile/Profile.vue').default);
 
 // COMMMON
+Vue.component('progress-bar', require('./components/common/ProgressBar.vue').default);
 Vue.component('top-box', require('./components/dashboard/TopBox.vue').default);
 
 

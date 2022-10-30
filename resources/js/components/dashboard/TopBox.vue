@@ -7,7 +7,10 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             {{title}}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{body}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            {{body}}
+                            <slot></slot>
+                        </div>
                     </div>
                     <div class="col-auto">
                         <i :class="['fas fa-2x text-gray-300 ', iconClass]"></i>

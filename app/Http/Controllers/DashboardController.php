@@ -17,10 +17,10 @@ class DashboardController extends Controller
     public function get()
     {
         $user          = Auth::user();
-        $projects      = Project::whereIn('group_id', $user->groups->pluck('id'))->get();
+        $projects      = Project::whereIn('group_id', $user->groups->pluck('id'));
         $open_projects = $projects->whereNull('completion_date');
         $tasks         = ProjectTask::whereIn('project_id', $projects->pluck('id'));
-        $open_tasks    = $tasks->whereNull('completion_date')->count();
+        $open_tasks    = $tasks->whereNull('completion_date');
         $progress      = 0;// $open_tasks == 0 ? 100 : $tasks->count() / $open_tasks;
 
         foreach($open_projects as $project)
@@ -33,10 +33,12 @@ class DashboardController extends Controller
         //     'progress'      => $progress
         // ]);
         return response()->json([
-            'user'          => $user,
-            'open_projects' => $open_projects,
-            'open_tasks'    => $open_tasks,
-            'progress'      => $progress
+            'user'                => $user,
+            'open_projects'       => $open_projects->get(),
+            'open_projects_count' => $open_projects->count(),
+            'open_tasks'          => $open_tasks->get(),
+            'open_tasks_count'    => $open_tasks->count(),
+            'progress'            => $progress
         ]);
     }
 }

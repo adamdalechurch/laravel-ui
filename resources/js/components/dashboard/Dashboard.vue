@@ -1,9 +1,11 @@
 <template>
   <div>
     <div class="row">
-      <top-box colorClass='primary' title='Open Projects' iconClass="fa-edit" :body="dashboard.open_projects"></top-box>
-      <top-box colorClass='success' title='Open Tasks' iconClass="fa-check-circle" :body="dashboard.open_tasks"></top-box>
-      <top-box colorClass='info' title='Progress' iconClass="fa-clipboard-list" :body="dashboard.open_projects"></top-box>
+      <top-box colorClass='primary' title='Open Projects' iconClass="fa-edit" :body="dashboard.open_projects_count"></top-box>
+      <top-box colorClass='success' title='Open Tasks' iconClass="fa-check-circle" :body="dashboard.open_tasks_count"></top-box>
+      <top-box colorClass='info' title='Progress' iconClass="fa-clipboard-list" body="">
+        <progress-bar :percent="dashboard.progress" />
+      </top-box>
     </div>
     <div class="row">
 
@@ -86,9 +88,13 @@ export default {
   data() {
     return {
       dashboard: {
-        open_tasks: 0,
-        open_projects: 0,
-        open_tasks: 0,
+        open_tasks: [],
+        open_projects: [],
+        open_tasks: [],
+        pen_tasks_count: 0,
+        open_projects_count: 0,
+        open_tasks_count: 0,
+        progress: 0
       }
     }
   },
