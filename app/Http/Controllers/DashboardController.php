@@ -32,6 +32,9 @@ class DashboardController extends Controller
         //     'open_tasks'    => $open_tasks,
         //     'progress'      => $progress
         // ]);
+
+        usleep(.5);
+        
         return response()->json([
             'user'                => $user,
             'open_projects'       => $open_projects->get(),
