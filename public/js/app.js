@@ -5449,7 +5449,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       dashboard: (_dashboard = {
         open_tasks: [],
         open_projects: []
-      }, _defineProperty(_dashboard, "open_tasks", []), _defineProperty(_dashboard, "pen_tasks_count", 0), _defineProperty(_dashboard, "open_projects_count", 0), _defineProperty(_dashboard, "open_tasks_count", 0), _defineProperty(_dashboard, "progress", 0), _dashboard)
+      }, _defineProperty(_dashboard, "open_tasks", []), _defineProperty(_dashboard, "pen_tasks_count", null), _defineProperty(_dashboard, "open_projects_count", null), _defineProperty(_dashboard, "open_tasks_count", null), _defineProperty(_dashboard, "progress", 0), _dashboard)
     };
   },
   created: function created() {
@@ -5486,6 +5486,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+//
+//
+//
 //
 //
 //
@@ -5509,15 +5513,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_defineProperty({
+  updated: false,
   name: "Top Box",
   props: {
     title: 'title',
     colorClass: 'primary',
-    body: 'name',
+    body: null,
     iconClass: 'fa-edit'
   }
-});
+}, "updated", function updated() {
+  this.updated = true;
+}));
 
 /***/ }),
 
@@ -29723,6 +29730,8 @@ var staticRenderFns = [
     return _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-xl-8 col-lg-7" }, [
         _c("div", { staticClass: "card shadow mb-4" }, [
+          _vm._v("\n0             "),
+          _vm._v(" "),
           _c(
             "div",
             {
@@ -29924,19 +29933,29 @@ var render = function () {
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
-                [
-                  _vm._v(
-                    "\r\n                            " +
-                      _vm._s(_vm.body) +
-                      "\r\n                            "
-                  ),
-                  _vm._t("default"),
-                ],
-                2
-              ),
+              _vm.body != null
+                ? _c(
+                    "div",
+                    { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
+                    [
+                      _vm._v(
+                        "\r\n                            " +
+                          _vm._s(_vm.body) +
+                          "\r\n                            "
+                      ),
+                      _vm._t("default"),
+                    ],
+                    2
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.body == null
+                ? _c(
+                    "div",
+                    { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
+                    [_c("i", { staticClass: "fas fa-circle-notch fa-spin" })]
+                  )
+                : _vm._e(),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-auto" }, [

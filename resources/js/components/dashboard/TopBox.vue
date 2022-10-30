@@ -7,9 +7,12 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             {{title}}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" v-if="body != null">
                             {{body}}
                             <slot></slot>
+                        </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800" v-if="body == null">
+                            <i class="fas fa-circle-notch fa-spin"></i>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -23,12 +26,17 @@
 <script>
 
 export default {
+  updated: false,
   name: "Top Box",
   props: {
     title: 'title',
     colorClass: 'primary',
-    body: 'name',
+    body: null,
     iconClass: 'fa-edit'
+  },
+
+  updated(){
+    this.updated = true;
   }
 }
 </script>

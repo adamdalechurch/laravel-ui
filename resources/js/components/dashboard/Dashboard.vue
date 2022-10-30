@@ -12,7 +12,7 @@
       <!-- Area Chart -->
       <div class="col-xl-8 col-lg-7">
           <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
+ 0             <!-- Card Header - Dropdown -->
               <div
                   class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">My Groups</h6>
@@ -91,9 +91,9 @@ export default {
         open_tasks: [],
         open_projects: [],
         open_tasks: [],
-        pen_tasks_count: 0,
-        open_projects_count: 0,
-        open_tasks_count: 0,
+        pen_tasks_count: null,
+        open_projects_count: null,
+        open_tasks_count: null,
         progress: 0
       }
     }
