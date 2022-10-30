@@ -7,10 +7,10 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             {{title}}
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{bodyText}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{body}}</div>
                     </div>
                     <div class="col-auto">
-                        <i :class="[`fa-${iconClass}`, 'fas edit fa-2x text-gray-300']"></i>
+                        <i :class="['fas fa-2x text-gray-300 ', iconClass]"></i>
                     </div>
                 </div>
             </div>
@@ -24,7 +24,7 @@ export default {
   props: {
     title: 'title',
     colorClass: 'primary',
-    bodyText: 'name',
+    body: 'name',
     iconClass: 'fa-edit'
   }
 }

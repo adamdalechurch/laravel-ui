@@ -1,67 +1,10 @@
 <template>
   <div>
     <div class="row">
-      <!-- Earnings (Monthly) Card Example -->
-      <!-- <div class="col-xl-4 mb-4">
-          <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                          Open Projects
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{dashboard.open_projects}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-edit fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div> -->
-      <top-box colorClass='primary' title='Open Projects' iconClass="fa-edit" :bodyText="dashboard.open_projects"></top-box>
-
-      <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-4 mb-4">
-          <div class="card border-left-success shadow h-100 py-2">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                              Open Tasks
-                          </div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{$open_tasks}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-check-circle fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-4 mb-4">
-          <div class="card border-left-info shadow h-100 py-2">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                              Progress
-                          </div>
-                          <div class="row no-gutters align-items-center">
-                              <!-- <x-common.progress-bar :percent="$progress" /> -->
-                          </div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div><!-- END ROW-->
-
+      <top-box colorClass='primary' title='Open Projects' iconClass="fa-edit" :body="dashboard.open_projects"></top-box>
+      <top-box colorClass='success' title='Open Tasks' iconClass="fa-check-circle" :body="dashboard.open_tasks"></top-box>
+      <top-box colorClass='info' title='Progress' iconClass="fa-clipboard-list" :body="dashboard.open_projects"></top-box>
+    </div>
     <div class="row">
 
       <!-- Area Chart -->

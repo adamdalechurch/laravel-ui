@@ -5400,63 +5400,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Dashboard",
@@ -5527,7 +5470,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     title: 'title',
     colorClass: 'primary',
-    bodyText: 'name',
+    body: 'name',
     iconClass: 'fa-edit'
   }
 });
@@ -29150,103 +29093,35 @@ var render = function () {
             colorClass: "primary",
             title: "Open Projects",
             iconClass: "fa-edit",
-            bodyText: _vm.dashboard.open_projects,
+            body: _vm.dashboard.open_projects,
           },
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xl-4 mb-4" }, [
-          _c(
-            "div",
-            { staticClass: "card border-left-success shadow h-100 py-2" },
-            [
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  { staticClass: "row no-gutters align-items-center" },
-                  [
-                    _c("div", { staticClass: "col mr-2" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "text-xs font-weight-bold text-success text-uppercase mb-1",
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Open Tasks\n                        "
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "h5 mb-0 font-weight-bold text-gray-800",
-                        },
-                        [_vm._v(_vm._s(_vm.$open_tasks))]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(0),
-                  ]
-                ),
-              ]),
-            ]
-          ),
-        ]),
+        _c("top-box", {
+          attrs: {
+            colorClass: "success",
+            title: "Open Tasks",
+            iconClass: "fa-check-circle",
+            body: _vm.dashboard.open_tasks,
+          },
+        }),
         _vm._v(" "),
-        _vm._m(1),
+        _c("top-box", {
+          attrs: {
+            colorClass: "info",
+            title: "Progress",
+            iconClass: "fa-clipboard-list",
+            body: _vm.dashboard.open_projects,
+          },
+        }),
       ],
       1
     ),
     _vm._v(" "),
-    _vm._m(2),
+    _vm._m(0),
   ])
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-auto" }, [
-      _c("i", { staticClass: "fas fa-check-circle fa-2x text-gray-300" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xl-4 mb-4" }, [
-      _c("div", { staticClass: "card border-left-info shadow h-100 py-2" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row no-gutters align-items-center" }, [
-            _c("div", { staticClass: "col mr-2" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "text-xs font-weight-bold text-info text-uppercase mb-1",
-                },
-                [
-                  _vm._v(
-                    "\n                            Progress\n                        "
-                  ),
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "row no-gutters align-items-center" }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-auto" }, [
-              _c("i", {
-                staticClass: "fas fa-clipboard-list fa-2x text-gray-300",
-              }),
-            ]),
-          ]),
-        ]),
-      ]),
-    ])
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
@@ -29458,14 +29333,12 @@ var render = function () {
               _c(
                 "div",
                 { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
-                [_vm._v(_vm._s(_vm.bodyText))]
+                [_vm._v(_vm._s(_vm.body))]
               ),
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-auto" }, [
-              _c("i", {
-                class: ["fa-" + _vm.iconClass, "fas edit fa-2x text-gray-300"],
-              }),
+              _c("i", { class: ["fas fa-2x text-gray-300 ", _vm.iconClass] }),
             ]),
           ]),
         ]),
