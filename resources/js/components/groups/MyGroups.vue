@@ -65,6 +65,7 @@ export default {
   methods: {
     getItems: function(){
       this.showModal = false; 
+      this.rowData = null;
       axios
         .get(process.env.MIX_API_URL + '/api/groups')
         .then(response => {
@@ -77,7 +78,6 @@ export default {
       this.showModal = true;
     },
     saveItem: function(){
-      alert(this.item.name);
       axios
         .post(process.env.MIX_API_URL + '/api/groups/store', this.item)
         .then(this.getItems());
