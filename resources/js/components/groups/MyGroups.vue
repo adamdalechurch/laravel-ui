@@ -10,7 +10,7 @@
             <div class="card-body">
                 <div class="table-responsive" v-if="rowData != null">
                     <ag-grid-vue style="width: 100%; height: 500px;"
-                        class="ag-theme-alpine"
+                        class="ag-theme-material"
                         :columnDefs="columnDefs"
                         :rowData="rowData">
                     </ag-grid-vue>
@@ -56,9 +56,5 @@ export default {
 </script>
 <style lang="scss">
    @import "~ag-grid-community/styles/ag-grid.css";
-   @import "~ag-grid-community/styles/ag-theme-alpine.css";
-</style>
-<style lang="scss">
-  @import "~ag-grid-community/styles/ag-grid.css";
-  @import "~ag-grid-community/styles/ag-theme-alpine.css";
+   @import "~ag-grid-community/styles/ag-theme-material.css";
 </style>
