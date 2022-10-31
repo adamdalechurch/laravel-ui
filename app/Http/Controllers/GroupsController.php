@@ -12,7 +12,9 @@ class GroupsController extends Controller
 
     public function my_groups()
     {
-        return view('groups.my-groups', ['groups' => Auth::user()->groups]);
+        return response()->json([
+            'groups' => Auth::user()->groups
+        ]);
     }
 
     public function show($id)

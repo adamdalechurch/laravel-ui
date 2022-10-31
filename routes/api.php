@@ -20,3 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'get'])->name('dashboard');
+
+require __DIR__.'/groups.php';
+require __DIR__.'/projects.php';
+require __DIR__.'/tasks.php';
+
+

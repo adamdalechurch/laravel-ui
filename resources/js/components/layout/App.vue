@@ -236,9 +236,6 @@
                 menuOpen: false
             }
         },
-        mounted() {
-            console.log('Component mounted.')
-        },
         methods: {
             toggleMenu (){
                 this.menuOpen = !this.menuOpen;
