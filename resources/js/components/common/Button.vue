@@ -1,6 +1,6 @@
 
 <template>
-    <button @click="click" class='d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'>
+    <button type="button" @click="click" class='d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm'>
         <slot></slot>
     </button>
 </template>

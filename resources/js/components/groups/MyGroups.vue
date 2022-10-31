@@ -20,7 +20,15 @@
                 </div>
             </div>
         </div>
-        <modal v-if="showModal" @close="showModal=false"></modal>
+        <modal 
+          v-if="showModal" 
+          @close="showModal=false"
+          @save="saveItem"
+          :ModalTitle="modalTitle"
+          ModalConfirmBtnTxt="Save"
+        >
+          <group-form :group="item"></group-form>
+        </modal>
     </div>
 </template>
 <script>
@@ -33,7 +41,9 @@ export default {
       columnDefs: null,
       rowData: null,
       item: null,
-      showModal: false
+      showModal: false,
+      modalTitle: null,
+      itemName: null,
     };
   },
   components: {
@@ -49,16 +59,28 @@ export default {
     ];
   },
   async created(){
-    axios
-      .get(process.env.MIX_API_URL + '/api/groups')
-      .then(response => {
-        this.rowData = response.data.groups;
-      })
+    this.itemName = "Group";
+    this.getItems();
   },
   methods: {
+    getItems: function(){
+      this.showModal = false; 
+      axios
+        .get(process.env.MIX_API_URL + '/api/groups')
+        .then(response => {
+          this.rowData = response.data.groups;
+      })    
+    },
     newItem: function (){
-      this.item = {}
+      this.item = {};
+      this.modalTitle = `New ${this.itemName}`;
       this.showModal = true;
+    },
+    saveItem: function(){
+      alert(this.item.name);
+      axios
+        .post(process.env.MIX_API_URL + '/api/groups/store', this.item)
+        .then(this.getItems());
     }
   }
 };
