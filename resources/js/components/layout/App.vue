@@ -178,19 +178,19 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" @click="toggleMenu" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
                             <img class="img-profile rounded-circle"
                                 src="img/user.png">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="my-profile">
+                        <div v-if="menuOpen" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            aria-labelledby="userDropdown" style="display:block">
+                            <router-link to="/profile" class="dropdown-item">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
-                            </a>
+                            </router-link>
                             <!-- <a class="dropdown-item" href="#">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Settings
@@ -198,13 +198,16 @@
                             <a class="dropdown-item" href="#">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Activity Log
-                            </a> -->
-                            <div class="dropdown-divider"></div>
-
-                            <!-- <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            </a>
+                            <div class="dropdown-divider"></div> -->
+                            <!-- <router-link to="/profile" class="dropdown-item">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
-                            </a> -->
+                            </router-link> -->
+                           <a class="dropdown-item" @click="logout" href="#" >
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
                         </div>
                     </li>
                 </ul>
@@ -227,8 +230,27 @@
 
 <script>
     export default {
+        Name: "App",
+        data() {
+            return {
+                menuOpen: false
+            }
+        },
         mounted() {
             console.log('Component mounted.')
+        },
+        methods: {
+            toggleMenu (){
+                this.menuOpen = !this.menuOpen;
+            },
+            logout(){
+                axios
+                .post('/logout')
+                .then(response => {
+                    location.reload();
+                })
+            }
         }
     }
+
 </script>
