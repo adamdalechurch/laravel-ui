@@ -5,7 +5,7 @@
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <x-button2 type='button' data-toggle="modal" data-target="#NewGroupModal"><i class="fas fa-plus fa-sm text-white-50"></i> New Group</x-button2>
+                <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New Group</button-common>
             </div>
             <div class="card-body">
                 <div class="table-responsive" v-if="rowData != null">
@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+        <modal v-if="showModal" @close="showModal=false"></modal>
     </div>
 </template>
 <script>
@@ -31,6 +32,8 @@ export default {
     return {
       columnDefs: null,
       rowData: null,
+      item: null,
+      showModal: false
     };
   },
   components: {
@@ -51,6 +54,12 @@ export default {
       .then(response => {
         this.rowData = response.data.groups;
       })
+  },
+  methods: {
+    newItem: function (){
+      this.item = {}
+      this.showModal = true;
+    }
   }
 };
 </script>

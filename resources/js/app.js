@@ -34,12 +34,11 @@ Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
 Vue.component('profile', require('./components/profile/Profile.vue').default);
 
 // COMMMON
+Vue.component('button-common', require('./components/common/Button.vue').default);
 Vue.component('groups-list', require('./components/groups/GroupsList.vue').default);
+Vue.component("modal", require('./components/common/Modal.vue').default);
 Vue.component('progress-bar', require('./components/common/ProgressBar.vue').default);
 Vue.component('top-box', require('./components/dashboard/TopBox.vue').default);
-
-
-
 
 Vue.use(VueRouter)
 
