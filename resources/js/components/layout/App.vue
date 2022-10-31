@@ -245,7 +245,7 @@
             },
             logout(){
                 axios
-                .post('/logout')
+                .post(process.env.MIX_API_URL + '/logout')
                 .then(response => {
                     location.reload();
                 })

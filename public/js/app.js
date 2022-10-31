@@ -5464,7 +5464,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              axios.get('/api/dashboard').then(function (response) {
+              axios.get("http://localhost:8000" + '/api/dashboard').then(function (response) {
                 _this.dashboard = response.data;
               });
             case 1:
@@ -5815,7 +5815,7 @@ __webpack_require__.r(__webpack_exports__);
       this.menuOpen = !this.menuOpen;
     },
     logout: function logout() {
-      axios.post('/logout').then(function (response) {
+      axios.post("http://localhost:8000" + '/logout').then(function (response) {
         location.reload();
       });
     }

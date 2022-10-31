@@ -107,7 +107,7 @@ export default {
   },
   async created(){
     axios
-      .get('/api/dashboard')
+      .get(process.env.MIX_API_URL + '/api/dashboard')
       .then(response => {
         this.dashboard = response.data;
       })
