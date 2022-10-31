@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "ag-grid-community": "^28.2.0",
+        "ag-grid-vue": "^28.2.0",
+        "vue-property-decorator": "^8.0.0",
         "vue-router": "3.0"
     }
 }
