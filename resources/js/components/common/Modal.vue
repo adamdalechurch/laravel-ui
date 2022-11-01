@@ -36,7 +36,6 @@ export default {
         },
 
         save(){
-            console.log(this.$slots);
             this.$emit('save');
         }
     }

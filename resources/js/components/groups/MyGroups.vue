@@ -12,7 +12,9 @@
                     <ag-grid-vue style="width: 100%; height: 500px;"
                         class="ag-theme-material"
                         :columnDefs="columnDefs"
-                        :rowData="rowData">
+                        :rowData="rowData"
+                        v-on:edit="edit"
+                        >
                     </ag-grid-vue>
                 </div>
                 <div class="table-responsive" v-if="rowData == null">
@@ -33,7 +35,7 @@
 </template>
 <script>
 import { AgGridVue } from "ag-grid-vue";
-
+import ActionCell from "./ActionCell.vue";
 export default {
   name: "My Groups",
   data() {
@@ -48,6 +50,7 @@ export default {
   },
   components: {
     AgGridVue,
+    ActionCell
   },
   beforeMount() {
     this.columnDefs = [
@@ -55,7 +58,14 @@ export default {
       { field: "owner" },
       { field: "roles" },
       { field: "created_at" },
-      { field: "actions" }
+      { 
+        headerName: "Actions",
+        cellRenderer: 'ActionCell',
+        cellRendererParams : {
+          edit: this.edit.bind(this),
+          del: this.del.bind(this)
+        }
+      }
     ];
   },
   async created(){
@@ -81,6 +91,12 @@ export default {
       axios
         .post(process.env.MIX_API_URL + '/api/groups/store', this.item)
         .then(this.getItems());
+    },
+    edit: function(e, id){
+      alert(id)
+    },
+    del: function(e, id){
+      alert(id)
     }
   }
 };
