@@ -28,7 +28,9 @@
     itemName='Group'
     title='My Groups'
   >
-    <group-form :group='item' />
+  <template v-slot="{item}">
+    <group-form :item="item" />
+  </template>
   </grid>
 </template>
 <script>

@@ -1,11 +1,11 @@
 <template>
   <div>
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">My Groups</h1>
+          <h1 class="h3 mb-0 text-gray-800">{{title}}</h1>
       </div>
       <div class="card shadow mb-4">
           <div class="card-header py-3">
-              <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New Group</button-common>
+              <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
           </div>
           <div class="card-body" >
               <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
@@ -34,7 +34,7 @@
         :ModalTitle="modalTitle"
         ModalConfirmBtnTxt="Save"
       >
-        <group-form :group="item"></group-form>
+        <slot :item="item" v-bind="item"></slot>
       </modal>
   </div>
 </template>
@@ -46,10 +46,8 @@ name: "Grid",
 data() {
   return {
     rowData: null,
-    item: null,
     showModal: false,
     modalTitle: null,
-    itemName: null,
     defaultColDef: {
       editable: true,
       enableRowGroup: true,
@@ -60,12 +58,15 @@ data() {
       filter: true,
       flex: 1,
       minWidth: 300,
+      item: null
     },
     columnDefs: null
   };
 },
 props: {
-  columnDefsProp: null
+  columnDefsProp: null,
+  itemName: null,
+  title: null
 },
 components: {
   AgGridVue,
@@ -84,7 +85,6 @@ beforeMount() {
       })
 },
 async created(){
-  this.itemName = "Group";
   this.getItems();
 },
 methods: {
@@ -92,10 +92,10 @@ methods: {
     this.showModal = false; 
     this.rowData = null;
     axios
-      .get(process.env.MIX_API_URL + '/api/groups')
+      .get(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/`)
       .then(response => {
-        this.rowData = response.data.groups;
-    })    
+          this.rowData = response.data.groups;
+      })    
   },
   newItem: function (){
     this.item = {};
@@ -104,7 +104,7 @@ methods: {
   },
   saveItem: function(){
     axios
-      .post(process.env.MIX_API_URL + '/api/groups/store', this.item)
+      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/store`, this.item)
       .then(this.getItems());
   },
   edit: function(e, id){
@@ -114,7 +114,7 @@ methods: {
   },
   del: function(e, id){
     axios
-      .post(process.env.MIX_API_URL + `/api/groups/${id}/delete`)
+      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/${id}/delete`)
       .then(this.getItems());
   }
 }
