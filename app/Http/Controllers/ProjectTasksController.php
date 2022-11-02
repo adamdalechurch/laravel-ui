@@ -63,7 +63,7 @@ class ProjectTasksController extends Controller
         $project_task->project_id  = $request->input('project_id');
         $project_task->save();
 
-        return redirect('/projects/' . $request->input('project_id') . "?success=Succesfully+added+task!");
+        return response('true', 200);
     }
 
     public function delete($id)

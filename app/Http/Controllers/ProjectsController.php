@@ -62,7 +62,7 @@ class ProjectsController extends Controller
         // $group_project->project_id = $project->id;
         // $group_project->save();
 
-        return response('false', 200);
+        return response('true', 200);
 
     }
 
