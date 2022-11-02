@@ -12,7 +12,10 @@ class ProjectTasksController extends Controller
 
     public function my_tasks()
     {
-        return view('tasks.my-tasks', ['tasks' => ProjectTask::whereIn('project_id', Project::whereIn('group_id', Auth::user()->groups->pluck('id'))->get())->get()]);
+        return response()->json([
+            //whereIn('project_id', Project::whereIn('group_id', Auth::user()->groups->pluck('id'))->get())
+            'items' => ProjectTask::get()
+        ]);
     }
 
     public function show($id)
