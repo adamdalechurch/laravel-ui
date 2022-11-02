@@ -44,7 +44,9 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', component: { template: '<dashboard />' } },
   { path: '/groups', component: { template: '<my-groups />' } },
+  { path: '/groups/:id', component: { template: '<my-projects />' } },
   { path: '/projects', component: { template: '<my-projects />' } },
+  { path: '/projects/:id', component: { template: '<my-tasks />' } },
   { path: '/tasks', component: { template: '<my-tasks />' } },
   { path: '/profile', component: { template: '<my-profile />' } },
 ]
