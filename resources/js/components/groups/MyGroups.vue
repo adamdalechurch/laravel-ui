@@ -7,12 +7,17 @@
             <div class="card-header py-3">
                 <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New Group</button-common>
             </div>
-            <div class="card-body">
-                <div class="table-responsive" v-if="rowData != null">
+            <div class="card-body" >
+                <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
                     <ag-grid-vue style="width: 100%; height: 500px;"
                         class="ag-theme-material"
                         :columnDefs="columnDefs"
                         :rowData="rowData"
+                        :paginationAutoPageSize="true"
+                        :pagination="true"
+                        :defaultColDef="defaultColDef"
+                        :sizeColumnsToFit="true"
+                        :autoSizeColumns="true"
                         v-on:edit="edit"
                         >
                     </ag-grid-vue>
@@ -46,6 +51,17 @@ export default {
       showModal: false,
       modalTitle: null,
       itemName: null,
+      defaultColDef: {
+        editable: true,
+        enableRowGroup: true,
+        enablePivot: true,
+        enableValue: true,
+        sortable: true,
+        resizable: true,
+        filter: true,
+        flex: 1,
+        minWidth: 300,
+      },
     };
   },
   components: {
@@ -53,13 +69,36 @@ export default {
     ActionCell
   },
   beforeMount() {
+    this.defaultColDef = {
+      sortable: true
+    };
     this.columnDefs = [
-      { field: "name" },
-      { field: "owner" },
-      { field: "roles" },
-      { field: "created_at" },
+      { 
+        field: "name",
+        headerName: "Name",
+        filter: 'agTextColumnFilter',
+        flex: 1,
+        sortable: true
+      },
+      { 
+        field: "owner" ,
+        flex: 1,
+        headerName: "Owner",
+      },
+      { 
+        field: "roles",
+        flex: 1,
+        headerName: "My Group Roles",
+      },
+      { 
+        field: "created_at",
+        flex: 1,
+        headerName: "Date Created",
+        sortable: true
+      },
       { 
         headerName: "Actions",
+        flex: 1,
         cellRenderer: 'ActionCell',
         cellRendererParams : {
           edit: this.edit.bind(this),
