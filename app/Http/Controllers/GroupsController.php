@@ -39,17 +39,26 @@ class GroupsController extends Controller
 
     public function store(Request $request)
     {
-        $group = new Group;
+        $id = $request->input('id');
+
+        if($id)
+            $group = Group::find($id);
+        else
+            $group = new Group;
+
         $group->name = trim(htmlspecialchars($request->input('name')));
         $group->user_id = Auth::user()->id;
         $group->save();
 
-        $user_group = new UserGroup;
-        $user_group->user_id = Auth::user()->id;
-        $user_group->group_id = $group->id;
-        $user_group->save();
-
-        return redirect('/groups');
+        if(!$id)
+        {
+            $user_group = new UserGroup;
+            $user_group->user_id = Auth::user()->id;
+            $user_group->group_id = $group->id;
+            $user_group->save();
+        }
+        
+        return response('true', 200);
     }
 
     public function delete($id)

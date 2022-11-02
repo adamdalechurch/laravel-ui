@@ -93,10 +93,14 @@ export default {
         .then(this.getItems());
     },
     edit: function(e, id){
-      alert(id)
+      this.item = this.rowData.find(x => x.id == id);
+      this.modalTitle = `Edit ${this.itemName}`;
+      this.showModal = true;
     },
     del: function(e, id){
-      alert(id)
+      axios
+        .post(process.env.MIX_API_URL + `/api/groups/${id}/delete`)
+        .then(this.getItems());
     }
   }
 };
