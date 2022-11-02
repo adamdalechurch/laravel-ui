@@ -13,7 +13,7 @@ class GroupsController extends Controller
     public function my_groups()
     {
         return response()->json([
-            'groups' => Auth::user()->groups
+            'items' => Auth::user()->groups
         ]);
     }
 

@@ -10,7 +10,9 @@ class ProjectsController extends Controller
 {
     public function my_projects()
     {
-        return view('projects.my-projects', ['projects' => Project::whereIn('group_id', Auth::user()->groups->pluck('id'))->get()]);
+        return response()->json([
+            'items' => Project::whereIn('group_id', Auth::user()->groups->pluck('id'))->get()
+        ]);
     }
 
     public function show($id)

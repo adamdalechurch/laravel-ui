@@ -44,11 +44,11 @@ export default {
 <style scoped>
 .modal {
     display:block;
-    z-index: 999 !important;
+    z-index: 1 !important;
 }
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;

@@ -94,7 +94,7 @@ methods: {
     axios
       .get(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/`)
       .then(response => {
-          this.rowData = response.data.groups;
+          this.rowData = response.data.items;
       })    
   },
   newItem: function (){
