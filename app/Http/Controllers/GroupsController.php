@@ -22,16 +22,6 @@ class GroupsController extends Controller
         return view('groups.group', ['group' => Group::find($id)]);
     }
 
-    public function update($id, Request $request)
-    {
-        $group = Group::find($id);
-        $group->name = trim(htmlspecialchars($request->input('name')));
-        $group->user_id = Auth::user()->id;
-        $group->save();
-
-        return redirect('/groups?success=Succesfully+updated+group!');
-    }
-
     public function edit($id)
     {
         return view('groups._edit-group', ['group' => Group::find($id)]);

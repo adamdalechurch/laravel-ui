@@ -6,9 +6,6 @@ use App\Http\Controllers\GroupsController;
 Route::get('/groups', [GroupsController::class, 'my_groups'])
 ->middleware(['auth:sanctum'])->name('my_groups');
 
-Route::post('/groups/{group_id}/update', [GroupsController::class, 'update'])
-->middleware(['auth:sanctum'])->name('update-group');
-
 Route::post('/groups/store', [GroupsController::class, 'store'])
 ->middleware(['auth:sanctum'])->name('store-group');
 

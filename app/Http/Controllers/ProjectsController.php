@@ -23,20 +23,6 @@ class ProjectsController extends Controller
         return view('projects._edit-project', ['project' => Project::find($id)]);
     }
 
-    public function update($id, Request $request)
-    {
-        $project = Project::find($id);
-        $project->name = trim(htmlspecialchars($request->input('name')));
-        $project->due_date = trim(htmlspecialchars($request->input('due_date')));
-        $project->description = trim(htmlspecialchars($request->input('description')));
-        $project->completion_date = null;
-        $project->group_id  = $request->input('group_id');
-        //$project->status_id = $request->input('status_id');
-        $project->user_id = Auth::user()->id;
-        $project->save();
-        return redirect('/groups/' . $request->input('group_id') . "?success=Succesfully+updated+project!");
-    }
-
     public function update_status($id, Request $request)
     {
         $project = Project::find($id);
@@ -55,7 +41,13 @@ class ProjectsController extends Controller
 
     public function store (Request $request)
     {
-        $project = new Project;
+        $id = $request->input('id');
+
+        if($id)
+            $project = Project::find($id);
+        else
+            $project = new Project;
+
         $project->name = trim(htmlspecialchars($request->input('name')));
         $project->due_date = trim(htmlspecialchars($request->input('due_date')));
         $project->description = trim(htmlspecialchars($request->input('description')));
@@ -70,7 +62,7 @@ class ProjectsController extends Controller
         // $group_project->project_id = $project->id;
         // $group_project->save();
 
-        return redirect('/groups/' . $request->input('group_id') . "?success=Succesfully+added+project!");
+        return response('false', 200);
 
     }
 

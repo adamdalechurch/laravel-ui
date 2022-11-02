@@ -25,19 +25,6 @@ class ProjectTasksController extends Controller
         return view('tasks._edit-task', ['task' => ProjectTask::find($id)]);
     }
 
-    public function update($id, Request $request)
-    {
-        $project_task = ProjectTask::find($id);
-        $project_task->name = trim(htmlspecialchars($request->input('name')));
-        $project_task->due_date = trim(htmlspecialchars($request->input('due_date')));
-        $project_task->description = trim(htmlspecialchars($request->input('description')));
-        $project_task->completion_date = null;
-        $project_task->project_id  = $request->input('project_id');
-        $project_task->save();
-
-        return redirect('/projects/' . $request->input('project_id') . "?success=Succesfully+updated+task!");
-    }
-
     public function update_status($id, Request $request)
     {
         $project_task = ProjectTask::find($id);
@@ -61,7 +48,13 @@ class ProjectTasksController extends Controller
 
     public function store(Request $request)
     {
-        $project_task = new ProjectTask;
+        $id = $request->input('id');
+
+        if($id)
+            $project_task = ProjectTask::find($id);
+        else
+            $project_task = new ProjectTask;
+
         $project_task->name = trim(htmlspecialchars($request->input('name')));
         $project_task->due_date = trim(htmlspecialchars($request->input('due_date')));
         $project_task->description = trim(htmlspecialchars($request->input('description')));

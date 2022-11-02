@@ -21,8 +21,5 @@ Route::post('/projects/{project_id}/delete', [ProjectsController::class, 'delete
 Route::get('/projects/{project_id}/edit', [ProjectsController::class, 'edit'])
 ->middleware(['auth:sanctum'])->name('edit-project');
 
-Route::post('/projects/{project_id}/update', [ProjectsController::class, 'update'])
-->middleware(['auth:sanctum'])->name('update-project');
-
 Route::post('/projects/{project_id}/update/status', [ProjectsController::class, 'update_status'])
 ->middleware(['auth:sanctum'])->name('update-project-status');

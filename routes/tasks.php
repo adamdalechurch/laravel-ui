@@ -17,8 +17,5 @@ Route::post('/tasks/store', [ProjectTasksController::class, 'store'])
 Route::get('/tasks/{task_id}/edit', [ProjectTasksController::class, 'edit'])
 ->middleware(['auth:sanctum'])->name('edit-task');
 
-Route::post('/tasks/{task_id}/update', [ProjectTasksController::class, 'update'])
-->middleware(['auth:sanctum'])->name('update-task');
-
 Route::post('/tasks/{task_id}/update/status', [ProjectTasksController::class, 'update_status'])
 ->middleware(['auth:sanctum'])->name('update-task-status');
