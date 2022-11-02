@@ -1,4 +1,5 @@
-export const GroupCols = [
+export const GroupCols = 
+[
     { 
         field: 'name',
         headerName: 'Name',
@@ -18,8 +19,8 @@ export const GroupCols = [
       },
       { 
         field: 'created_at',
+        headerName: "Date Created",
         flex: 1,
-        headerName: 'Date Created',
-        sortable: true
+        cellRenderer: 'DateCell',
       }
 ]

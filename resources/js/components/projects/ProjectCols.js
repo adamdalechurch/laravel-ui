@@ -18,13 +18,14 @@ export const ProjectCols = [
       },
       { 
         field: 'due_date',
+        headerName: "Due Date",
         flex: 1,
-        headerName: 'Due Date',
+        cellRenderer: 'DateCell',
       },
       { 
         field: 'created_at',
+        headerName: "Date Created",
         flex: 1,
-        headerName: 'Date Created',
-        sortable: true
+        cellRenderer: 'DateCell',
       }
 ]

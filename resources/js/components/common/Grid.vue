@@ -41,6 +41,8 @@
 <script>
 import { AgGridVue } from "ag-grid-vue";
 import ActionCell from "./ActionCell.vue";
+import DateCell from "./DateCell.vue";
+
 export default {
 name: "Grid",
 data() {
@@ -70,7 +72,8 @@ props: {
 },
 components: {
   AgGridVue,
-  ActionCell
+  ActionCell,
+  DateCell
 },
 beforeMount() {
   this.columnDefs = this.columnDefsProp
