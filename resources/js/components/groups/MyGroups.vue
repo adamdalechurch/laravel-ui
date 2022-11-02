@@ -1,150 +1,44 @@
 <template>
-    <div>
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">My Groups</h1>
-        </div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New Group</button-common>
-            </div>
-            <div class="card-body" >
-                <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
-                    <ag-grid-vue style="width: 100%; height: 500px;"
-                        class="ag-theme-material"
-                        :columnDefs="columnDefs"
-                        :rowData="rowData"
-                        :paginationAutoPageSize="true"
-                        :pagination="true"
-                        :defaultColDef="defaultColDef"
-                        :sizeColumnsToFit="true"
-                        :autoSizeColumns="true"
-                        v-on:edit="edit"
-                        >
-                    </ag-grid-vue>
-                </div>
-                <div class="table-responsive" v-if="rowData == null">
-                    <i class="fas fa-circle-notch fa-spin"></i>
-                </div>
-            </div>
-        </div>
-        <modal 
-          v-if="showModal" 
-          @close="showModal=false"
-          @save="saveItem"
-          :ModalTitle="modalTitle"
-          ModalConfirmBtnTxt="Save"
-        >
-          <group-form :group="item"></group-form>
-        </modal>
-    </div>
-</template>
-<script>
-import { AgGridVue } from "ag-grid-vue";
-import ActionCell from "./ActionCell.vue";
-export default {
-  name: "My Groups",
-  data() {
-    return {
-      columnDefs: null,
-      rowData: null,
-      item: null,
-      showModal: false,
-      modalTitle: null,
-      itemName: null,
-      defaultColDef: {
-        editable: true,
-        enableRowGroup: true,
-        enablePivot: true,
-        enableValue: true,
-        sortable: true,
-        resizable: true,
-        filter: true,
-        flex: 1,
-        minWidth: 300,
-      },
-    };
-  },
-  components: {
-    AgGridVue,
-    ActionCell
-  },
-  beforeMount() {
-    this.defaultColDef = {
-      sortable: true
-    };
-    this.columnDefs = [
+  <grid
+    :columnDefsProp="[
       { 
-        field: "name",
-        headerName: "Name",
+        field: 'name',
+        headerName: 'Name',
         filter: 'agTextColumnFilter',
         flex: 1,
         sortable: true
       },
       { 
-        field: "owner" ,
+        field: 'owner' ,
         flex: 1,
-        headerName: "Owner",
+        headerName: 'Owner',
       },
       { 
-        field: "roles",
+        field: 'roles',
         flex: 1,
-        headerName: "My Group Roles",
+        headerName: 'My Group Roles',
       },
       { 
-        field: "created_at",
+        field: 'created_at',
         flex: 1,
-        headerName: "Date Created",
+        headerName: 'Date Created',
         sortable: true
       },
-      { 
-        headerName: "Actions",
-        flex: 1,
-        cellRenderer: 'ActionCell',
-        cellRendererParams : {
-          edit: this.edit.bind(this),
-          del: this.del.bind(this)
-        }
-      }
-    ];
-  },
-  async created(){
-    this.itemName = "Group";
-    this.getItems();
-  },
-  methods: {
-    getItems: function(){
-      this.showModal = false; 
-      this.rowData = null;
-      axios
-        .get(process.env.MIX_API_URL + '/api/groups')
-        .then(response => {
-          this.rowData = response.data.groups;
-      })    
-    },
-    newItem: function (){
-      this.item = {};
-      this.modalTitle = `New ${this.itemName}`;
-      this.showModal = true;
-    },
-    saveItem: function(){
-      axios
-        .post(process.env.MIX_API_URL + '/api/groups/store', this.item)
-        .then(this.getItems());
-    },
-    edit: function(e, id){
-      this.item = this.rowData.find(x => x.id == id);
-      this.modalTitle = `Edit ${this.itemName}`;
-      this.showModal = true;
-    },
-    del: function(e, id){
-      axios
-        .post(process.env.MIX_API_URL + `/api/groups/${id}/delete`)
-        .then(this.getItems());
+    ]"
+    itemName='Group'
+    title='My Groups'
+  >
+    <group-form :group='item' />
+  </grid>
+</template>
+<script>
+import { AgGridVue } from 'ag-grid-vue';
+export default {
+  name: 'MyGroups',
+  data() {
+    return {
+      item: {},
     }
   }
-};
-</script>
-<style lang="scss">
-   @import "~ag-grid-community/styles/ag-grid.css";
-   @import "~ag-grid-community/styles/ag-theme-material.css";
-</style>
+}
+ 
