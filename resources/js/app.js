@@ -36,7 +36,6 @@ Vue.component('profile', require('./components/profile/Profile.vue').default);
 // COMMMON
 Vue.component('button-common', require('./components/common/Button.vue').default);
 Vue.component('grid', require('./components/common/Grid.vue').default);
-Vue.component('group-form', require('./components/groups/GroupForm.vue').default);
 Vue.component('groups-list', require('./components/groups/GroupsList.vue').default);
 Vue.component("modal", require('./components/common/Modal.vue').default);
 Vue.component('progress-bar', require('./components/common/ProgressBar.vue').default);
