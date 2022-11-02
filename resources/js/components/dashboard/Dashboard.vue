@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="row">
-      <top-box colorClass='primary' title='Open Projects' iconClass='fa-edit' :body="dashboard.open_projects_count"></top-box>
-      <top-box colorClass='success' title='Open Tasks' iconClass="`fa-check-circle`" :body="dashboard.open_tasks_count"></top-box>
-      <top-box colorClass='info' title='Progress' iconClass="`fa-clipboard-list`" body=""> 
+      <TopBox colorClass='primary' title='Open Projects' iconClass='fa-edit' :body="dashboard.open_projects_count"></TopBox>
+      <TopBox colorClass='success' title='Open Tasks' iconClass="`fa-check-circle`" :body="dashboard.open_tasks_count"></TopBox>
+      <TopBox colorClass='info' title='Progress' iconClass="`fa-clipboard-list`" body=""> 
         <progress-bar :percent="dashboard.progress" />
-      </top-box>
+      </TopBox>
     </div>
     <div class="row">
 
@@ -35,7 +35,7 @@
               <!-- Card Body -->
               <div class="card-body">
                   <div class="chart-area">
-                      <groups-list :groups="dashboard.user.groups" />
+                      <GroupsList :groups="dashboard.user.groups" />
                   </div>
               </div>
           </div>
@@ -85,7 +85,10 @@
 <script>
 import {
   CalcProgressPercent,
-} from '../../utlis/functions'
+} from '../../utlis/functions';
+import TopBox from './TopBox.vue'
+import GroupsList from '../groups/GroupsList.vue'
+
 export default {
   name: "Dashboard",
   data() {
@@ -101,6 +104,10 @@ export default {
         user: {}
       }
     }
+  },
+  components:{
+    TopBox,
+    GroupsList
   },
   methods: {
     CalcProgressPercent: CalcProgressPercent
