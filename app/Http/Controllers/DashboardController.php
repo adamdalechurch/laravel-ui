@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $open_tasks    = $tasks->whereNull('completion_date');
         $progress      = 0;// $open_tasks == 0 ? 100 : $tasks->count() / $open_tasks;
 
-        foreach($open_projects as $project)
+        foreach($open_projects->get() as $project)
             $progress += $project->progress_percent() / $open_projects->count();
         
         return response()->json([
