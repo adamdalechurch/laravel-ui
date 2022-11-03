@@ -83,9 +83,7 @@
 </template>
 
 <script>
-import {
-  CalcProgressPercent,
-} from '../../utlis/functions';
+import { CalcProgressPercent } from '../../utlis/functions';
 import TopBox from './TopBox.vue'
 import GroupsList from '../groups/GroupsList.vue'
 
@@ -109,9 +107,7 @@ export default {
     TopBox,
     GroupsList
   },
-  methods: {
-    CalcProgressPercent: CalcProgressPercent
-  },
+  methods: { CalcProgressPercent: CalcProgressPercent },
   async created(){
     axios
       .get(process.env.MIX_API_URL + '/api/dashboard')
