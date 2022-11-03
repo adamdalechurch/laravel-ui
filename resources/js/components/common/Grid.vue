@@ -79,15 +79,15 @@ beforeMount() {
   this.columnDefs = [
     ...this.columnDefsProp,
     { 
-        headerName: "Actions",
-        flex: 1,
-        cellRenderer: 'ActionCell',
-        cellRendererParams : {
-          edit: this.edit.bind(this),
-          del: this.del.bind(this)
-        }
+      headerName: "Actions",
+      flex: 1,
+      cellRenderer: 'ActionCell',
+      cellRendererParams : {
+        edit: this.edit.bind(this),
+        del: this.del.bind(this)
       }
-    ]
+    }
+  ]
 },
 async created(){
   this.getItems();

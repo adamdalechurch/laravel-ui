@@ -12,6 +12,12 @@ export const TaskCols = [
         headerName: 'Description',
       },
       { 
+        field: 'status_id',
+        headerName: "Status",
+        flex: 1,
+        cellRenderer: 'StatusCell',
+      },
+      { 
         field: 'project_id' ,
         flex: 1,
         headerName: 'Group',
