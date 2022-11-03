@@ -4,7 +4,6 @@
     </span>
 </template>
 <script>
-
 import { CalcProgressPercent } from '../../utlis/functions';
 
 export default {
