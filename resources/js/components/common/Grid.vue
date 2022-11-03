@@ -1,33 +1,27 @@
 <template>
-  <div>
-      <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">{{title}}</h1>
-      </div>
-      <div class="card shadow mb-4">
-          <div class="card-header py-3">
-              <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
-          </div>
-          <div class="card-body" >
-              <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
-                  <ag-grid-vue style="width: 100%; height: 500px;"
-                      class="ag-theme-material"
-                      :columnDefs="columnDefs"
-                      :rowData="rowData"
-                      :paginationAutoPageSize="true"
-                      :pagination="true"
-                      :defaultColDef="defaultColDef"
-                      :sizeColumnsToFit="true"
-                      :autoSizeColumns="true"
-                      v-on:edit="edit"
-                      >
-                  </ag-grid-vue>
-              </div>
-              <div class="table-responsive" v-if="rowData == null">
-                  <i class="fas fa-circle-notch fa-spin"></i>
-              </div>
-          </div>
-      </div>
-      <modal 
+  <page :title="title">
+    <template v-slot:header>
+      <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
+    </template>
+    <template v-slot:body>
+      <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
+        <ag-grid-vue style="width: 100%; height: 500px;"
+            class="ag-theme-material"
+            :columnDefs="columnDefs"
+            :rowData="rowData"
+            :paginationAutoPageSize="true"
+            :pagination="true"
+            :defaultColDef="defaultColDef"
+            :sizeColumnsToFit="true"
+            :autoSizeColumns="true"
+            v-on:edit="edit"
+            >
+        </ag-grid-vue>
+    </div>
+    <div class="table-responsive" v-if="rowData == null">
+        <i class="fas fa-circle-notch fa-spin"></i>
+    </div>
+    <modal 
         v-if="showModal" 
         @close="showModal=false"
         @save="saveItem"
@@ -36,7 +30,9 @@
       >
         <slot :item="item" v-bind="item"></slot>
       </modal>
-  </div>
+    </template>
+   
+  </page>
 </template>
 <script>
 import { AgGridVue } from "ag-grid-vue";
