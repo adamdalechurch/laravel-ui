@@ -20,7 +20,8 @@ export const TaskCols = [
       { 
         field: 'project_id' ,
         flex: 1,
-        headerName: 'Group',
+        headerName: 'Project',
+        cellRenderer: 'ProjectCell'
       },
       { 
         field: 'due_date',
