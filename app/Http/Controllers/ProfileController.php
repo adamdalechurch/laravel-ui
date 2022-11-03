@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     public function my_profile(){
-        return view('profile.my-profile', ['profile' => Auth::user()]);
+        return response()->json([
+            'profile' => Auth::user()
+        ]);
     }
 }
