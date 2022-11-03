@@ -5,7 +5,7 @@
     </div>
     <div class="col-lg-12">
         <div class="progress progress-sm mr-2">
-            <div class="progress-bar bg-info" role="progressbar"
+            <div   :class="{ 'bg-success': this.percent > 66, 'bg-warning': this.percent <= 66 && this.percent > 33, 'bg-danger': this.percent <= 33 }" role="progressbar"
                 :style="{ width: percent + '%'}" :aria-valuenow="percent" aria-valuemin="0"
                 aria-valuemax="100"></div>
         </div>
@@ -18,9 +18,9 @@
 export default {
     name: "ProgressBar",
     props: {
-    title: 'title',
-    colorClass: 'primary',
-    percent: 0
+        title: 'title',
+        colorClass: 'primary',
+        percent: 0
     }
 }
 </script>
