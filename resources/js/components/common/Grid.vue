@@ -76,8 +76,9 @@ components: {
   DateCell
 },
 beforeMount() {
-  this.columnDefs = this.columnDefsProp
-  this.columnDefs.push({ 
+  this.columnDefs = [
+    ...this.columnDefsProp,
+    { 
         headerName: "Actions",
         flex: 1,
         cellRenderer: 'ActionCell',
@@ -85,7 +86,8 @@ beforeMount() {
           edit: this.edit.bind(this),
           del: this.del.bind(this)
         }
-      })
+      }
+    ]
 },
 async created(){
   this.getItems();
