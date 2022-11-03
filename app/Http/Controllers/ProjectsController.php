@@ -11,7 +11,7 @@ class ProjectsController extends Controller
     public function my_projects()
     {
         return response()->json([
-            'items' => Project::whereIn('group_id', Auth::user()->groups->pluck('id'))->get()
+            'items' => Project::whereIn('group_id', Auth::user()->groups->pluck('id'))->with('group')->get()
         ]);
     }
 

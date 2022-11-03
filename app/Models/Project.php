@@ -25,4 +25,9 @@ class Project extends Model
         
         return round($completed / $total * 100);
     }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

@@ -12,9 +12,10 @@ export const ProjectCols = [
         headerName: 'Description',
       },
       { 
-        field: 'group_id' ,
+        field: 'group',
         flex: 1,
         headerName: 'Group',
+        cellRenderer: 'GroupCell',
       },
       { 
         field: 'due_date',
