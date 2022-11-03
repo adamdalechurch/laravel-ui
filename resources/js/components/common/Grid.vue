@@ -45,6 +45,7 @@ import DateCell from "./DateCell.vue";
 import GroupCell from "../groups/GroupCell.vue";
 import ProgressCell from "./ProgressCell.vue";
 import ProjectCell from "../projects/ProjectCell.vue";
+import UserCell from "../profile/UserCell.vue";
 
 export default {
 name: "Grid",
@@ -79,7 +80,8 @@ components: {
   DateCell,
   GroupCell,
   ProgressCell,
-  ProjectCell
+  ProjectCell,
+  UserCell
 },
 beforeMount() {
   this.columnDefs = [

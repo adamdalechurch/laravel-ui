@@ -13,7 +13,7 @@ class GroupsController extends Controller
     public function my_groups()
     {
         return response()->json([
-            'items' => Auth::user()->groups
+            'items' => Group::whereIn('id', Auth::user()->groups->pluck('id'))->with('owner')->get()
         ]);
     }
 
