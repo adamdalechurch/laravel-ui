@@ -37,6 +37,7 @@ Vue.component('my-profile', require('./components/profile/Profile.vue').default)
 Vue.component('button-common', require('./components/common/Button.vue').default);
 Vue.component('grid', require('./components/common/Grid.vue').default);
 Vue.component("modal", require('./components/common/Modal.vue').default);
+Vue.component("page", require('./components/common/Page.vue').default);
 Vue.component('progress-bar', require('./components/common/ProgressBar.vue').default);
 
 Vue.use(VueRouter)
