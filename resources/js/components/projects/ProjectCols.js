@@ -24,6 +24,12 @@ export const ProjectCols = [
         cellRenderer: 'DateCell',
       },
       { 
+        field: 'progress',
+        headerName: "Progress",
+        flex: 1,
+        cellRenderer: 'ProgressCell',
+      },
+      { 
         field: 'created_at',
         headerName: "Date Created",
         flex: 1,

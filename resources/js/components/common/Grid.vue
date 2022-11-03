@@ -43,6 +43,7 @@ import { AgGridVue } from "ag-grid-vue";
 import ActionCell from "./ActionCell.vue";
 import DateCell from "./DateCell.vue";
 import GroupCell from "../groups/GroupCell.vue";
+import ProgressCell from "./ProgressCell.vue";
 import ProjectCell from "../projects/ProjectCell.vue";
 
 export default {
@@ -61,7 +62,7 @@ data() {
       resizable: true,
       filter: true,
       flex: 1,
-      minWidth: 300,
+      minWidth: 150,
       item: null
     },
     columnDefs: null
@@ -77,6 +78,7 @@ components: {
   ActionCell,
   DateCell,
   GroupCell,
+  ProgressCell,
   ProjectCell
 },
 beforeMount() {
