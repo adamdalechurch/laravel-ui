@@ -34,7 +34,7 @@ Vue.component('my-projects', require('./components/projects/MyProjects.vue').def
 Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
 Vue.component('my-profile', require('./components/profile/Profile.vue').default);
 Vue.component('project', require('./components/projects/Project.vue').default);
-
+Vue.component('task', require('./components/tasks/Task.vue').default);
 
 // COMMMON
 Vue.component('button-common', require('./components/common/Button.vue').default);
@@ -52,6 +52,7 @@ const routes = [
   { path: '/projects', component: { template: '<my-projects />' } },
   { path: '/projects/:id', component: { template: '<project />' } },
   { path: '/tasks', component: { template: '<my-tasks />' } },
+  { path: '/tasks/:id', component: { template: '<task />' } },
   { path: '/profile', component: { template: '<my-profile />' } },
 ]
 
