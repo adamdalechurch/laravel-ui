@@ -19,7 +19,9 @@ class GroupsController extends Controller
 
     public function show($id)
     {
-        return view('groups.group', ['group' => Group::find($id)]);
+        return response()->json([
+            'item' => Group::find($id)
+        ]);
     }
 
     public function edit($id)

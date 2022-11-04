@@ -29,6 +29,7 @@ Vue.component('navigation', require('./components/layout/Navigation.vue').defaul
 // PAGES:
 Vue.component('dashboard', require('./components/dashboard/Dashboard.vue').default);
 Vue.component('my-groups', require('./components/groups/MyGroups.vue').default);
+Vue.component('group', require('./components/groups/Group.vue').default);
 Vue.component('my-projects', require('./components/projects/MyProjects.vue').default);
 Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
 Vue.component('my-profile', require('./components/profile/Profile.vue').default);
@@ -45,7 +46,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', component: { template: '<dashboard />' } },
   { path: '/groups', component: { template: '<my-groups />' } },
-  { path: '/groups/:id', component: { template: '<my-projects />' } },
+  { path: '/groups/:id', component: { template: '<group />' } },
   { path: '/projects', component: { template: '<my-projects />' } },
   { path: '/projects/:id', component: { template: '<my-tasks />' } },
   { path: '/tasks', component: { template: '<my-tasks />' } },
