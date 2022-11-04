@@ -9,9 +9,21 @@
       <!-- content for the header slot -->
     </template>
     <template v-slot:body>
-      <fieldset disabled>
-        <GroupForm :item="group"></GroupForm>
-      </fieldset>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <a class="nav-item nav-link"  @click="showDetails" id="nav-details-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
+          <a class="nav-item nav-link"  @click="showProjects" id="nav-projects-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Projects</a>
+        </div>
+      </nav>
+      <div class="tab-content" style="padding: 1.25rem" id="nav-tabContent">
+        <div v-if="detailsVisibile" class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-home-tab">
+          <fieldset disabled>
+            <GroupForm :item="group"></GroupForm>
+          </fieldset>
+        </div>
+        <div v-if="projectsVisibile" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
+        </div>
+      </div>
     </template>
   </page>
 </template>
@@ -22,6 +34,8 @@ export default {
   data() {
     return {
       group: {},
+      detailsVisibile: true,
+      projectsVisibile: false
     }
   },
   mounted(){
@@ -33,6 +47,16 @@ export default {
   },
   components: {
     GroupForm
+  },
+  methods: {
+    showDetails: function (){
+      this.detailsVisibile = true;
+      this.projectsVisibile = false;
+    },
+    showProjects: function (){
+      this.detailsVisibile = false;
+      this.projectsVisibile = true;
+    },
   }
 }
 </script>
