@@ -11,8 +11,8 @@
     <template v-slot:body>
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link"  @click="showDetails" id="nav-details-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
-          <a class="nav-item nav-link"  @click="showProjects" id="nav-projects-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Projects</a>
+          <a :class="[baseLinkClass, {'active': detailsVisibile}]"  @click="showDetails" id="nav-details-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
+          <a :class="[baseLinkClass, {'active': projectsVisibile}]"   @click="showProjects" id="nav-projects-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Projects</a>
         </div>
       </nav>
       <div class="tab-content" style="padding: 1.25rem" id="nav-tabContent">
@@ -51,7 +51,9 @@ export default {
       item: null,
       detailsVisibile: true,
       projectsVisibile: false,
-      projectCols: ProjectCols
+      projectCols: ProjectCols,
+      baseLinkClass: "nav-item nav-link"
+    //  :class="[activeClass, errorClass]"
     }
   },
   mounted(){
