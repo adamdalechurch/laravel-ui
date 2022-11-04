@@ -50,7 +50,7 @@ const routes = [
   { path: '/groups', component: { template: '<my-groups />' } },
   { path: '/groups/:id', component: { template: '<group />' } },
   { path: '/projects', component: { template: '<my-projects />' } },
-  { path: '/projects/:id', component: { template: '<my-tasks />' } },
+  { path: '/projects/:id', component: { template: '<project />' } },
   { path: '/tasks', component: { template: '<my-tasks />' } },
   { path: '/profile', component: { template: '<my-profile />' } },
 ]
