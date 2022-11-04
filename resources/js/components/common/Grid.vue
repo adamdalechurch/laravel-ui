@@ -1,38 +1,33 @@
 <template>
-  <page :title="title">
-    <template v-slot:header>
-      <button-common  type='button' @click="newItem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
-    </template>
-    <template v-slot:body>
-      <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
-        <ag-grid-vue style="width: 100%; height: 500px;"
-            class="ag-theme-material"
-            :columnDefs="columnDefs"
-            :rowData="rowData"
-            :paginationAutoPageSize="true"
-            :pagination="true"
-            :defaultColDef="defaultColDef"
-            :sizeColumnsToFit="true"
-            :autoSizeColumns="true"
-            v-on:edit="edit"
-            >
-        </ag-grid-vue>
-    </div>
-    <div class="table-responsive" v-if="rowData == null">
-        <i class="fas fa-circle-notch fa-spin"></i>
-    </div>
-    <modal 
-        v-if="showModal" 
-        @close="showModal=false"
-        @save="saveItem"
-        :ModalTitle="modalTitle"
-        ModalConfirmBtnTxt="Save"
-      >
-        <slot :item="item" v-bind="item"></slot>
-      </modal>
-    </template>
-   
-  </page>
+  <div>
+    <button-common  type='button' @click="newItem" style="margin-bottom: 1.25rem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
+    <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
+      <ag-grid-vue style="width: 100%; height: 500px;"
+          class="ag-theme-material"
+          :columnDefs="columnDefs"
+          :rowData="rowData"
+          :paginationAutoPageSize="true"
+          :pagination="true"
+          :defaultColDef="defaultColDef"
+          :sizeColumnsToFit="true"
+          :autoSizeColumns="true"
+          v-on:edit="edit"
+          >
+      </ag-grid-vue>
+  </div>
+  <div class="table-responsive" v-if="rowData == null">
+      <i class="fas fa-circle-notch fa-spin"></i>
+  </div>
+  <modal 
+      v-if="showModal" 
+      @close="showModal=false"
+      @save="saveItem"
+      :ModalTitle="modalTitle"
+      ModalConfirmBtnTxt="Save"
+    >
+      <slot :item="item" v-bind="item"></slot>
+    </modal>
+  </div>
 </template>
 <script>
 import { AgGridVue } from "ag-grid-vue";

@@ -1,13 +1,17 @@
 <template>
-  <grid v-if="cols.length > 0"
-    :columnDefsProp="cols"
-    itemName='Group'
-    title='My Groups'
-  >
-  <template v-slot="{item}">
-    <GroupForm :item="item" />
-  </template>
-  </grid>
+  <page title="My Groups">
+    <template v-slot:body>
+      <grid v-if="cols.length > 0"
+        :columnDefsProp="cols"
+        itemName='Group'
+        title='My Groups'
+      >
+      <template v-slot="{item}">
+        <GroupForm :item="item" />
+      </template>
+      </grid>
+    </template>
+  </page>
 </template>
 <script>
 import GroupForm from './GroupForm.vue';

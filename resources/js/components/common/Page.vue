@@ -7,9 +7,9 @@
           <h1 class="h3 mb-0 text-gray-800">{{title}}</h1>
       </div>
       <div class="card shadow mb-4">
-          <div v-if="showHeader || showHeader == undefined" class="card-header py-3">
+          <!-- <div v-if="showHeader || showHeader == undefined" class="card-header py-3">
             <slot name="header"></slot>
-          </div>
+          </div> -->
           <div class="card-body" >
             <slot name="body"></slot>
           </div>
@@ -21,7 +21,7 @@ export default {
   name: 'Page',
   props: {
     title: null,
-    showHeader: true
+    // showHeader: true
   },
 }
 </script>
