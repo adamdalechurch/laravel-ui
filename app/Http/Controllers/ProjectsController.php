@@ -17,7 +17,9 @@ class ProjectsController extends Controller
 
     public function show($id)
     {
-        return view('projects.project', ['project' => Project::find($id)]);
+        return response()->json([
+            'item' =>  Project::find($id)
+        ]);
     }
 
     public function edit($id)
