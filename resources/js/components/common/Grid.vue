@@ -38,6 +38,7 @@
 import { AgGridVue } from "ag-grid-vue";
 import ActionCell from "./ActionCell.vue";
 import DateCell from "./DateCell.vue";
+import ItemLinkCell from './ItemLinkCell.vue'
 import GroupCell from "../groups/GroupCell.vue";
 import ProgressCell from "./ProgressCell.vue";
 import ProjectCell from "../projects/ProjectCell.vue";
@@ -75,6 +76,7 @@ components: {
   ActionCell,
   DateCell,
   GroupCell,
+  ItemLinkCell,
   ProgressCell,
   ProjectCell,
   UserCell

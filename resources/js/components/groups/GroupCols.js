@@ -3,9 +3,12 @@ export const GroupCols =
   { 
     field: 'name',
     headerName: 'Name',
-    filter: 'agTextColumnFilter',
     flex: 1,
-    sortable: true
+    sortable: true,
+    cellRenderer: 'ItemLinkCell',
+    cellRendererParams: {
+      itemName: "group"
+    }
   },
   { 
     field: 'owner',
