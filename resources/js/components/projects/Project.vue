@@ -40,6 +40,7 @@
 </template>
 <script>
 import ProjectForm from './ProjectForm.vue';
+import StatusCell from '../common/StatusCell.vue';
 import { TaskCols } from '../tasks/TaskCols';
 import TaskForm from '../tasks/TaskForm';
 
@@ -66,6 +67,7 @@ export default {
   },
   components: {
     ProjectForm,
+    StatusCell,
     TaskForm
   },
   methods: {

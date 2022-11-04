@@ -22,7 +22,9 @@ class ProjectTasksController extends Controller
 
     public function show($id)
     {
-        return view('projects.task', ['task' => ProjectTask::find($id)]);
+        return response()->json([
+            'item' => ProjectTask::find($id)
+        ]);
     }
     
     public function edit($id)
