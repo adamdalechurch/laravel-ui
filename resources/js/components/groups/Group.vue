@@ -22,6 +22,17 @@
           </fieldset>
         </div>
         <div v-if="projectsVisibile" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <grid v-if="projectCols.length > 0"
+            :columnDefsProp="projectCols"
+            itemName='Project'
+            title='Projects'
+            :rowDataProps="group.projects"
+            :propItem="item"
+          >
+            <template v-if="item != null" v-slot="{item}">
+              <ProjectForm :item="item" />
+            </template>
+          </grid>
         </div>
       </div>
     </template>
@@ -29,13 +40,18 @@
 </template>
 <script>
 import GroupForm from './GroupForm.vue';
+import { ProjectCols } from '../projects/ProjectCols';
+import ProjectForm from '../projects/ProjectForm';
+
 export default {
   name: 'Group',
   data() {
     return {
       group: {},
+      item: null,
       detailsVisibile: true,
-      projectsVisibile: false
+      projectsVisibile: false,
+      projectCols: ProjectCols
     }
   },
   mounted(){
@@ -43,10 +59,12 @@ export default {
     .get(`${process.env.MIX_API_URL}/api/groups/${this.$route.params.id}`)
       .then(response => {
           this.group = response.data.item;
+          this.item = { group_id: this.group.id};
       }) 
   },
   components: {
-    GroupForm
+    GroupForm,
+    ProjectForm
   },
   methods: {
     showDetails: function (){

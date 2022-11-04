@@ -69,7 +69,11 @@ data() {
 props: {
   columnDefsProp: null,
   itemName: null,
-  title: null
+  title: null,
+  rowDataProps: null,
+  parentName: null,
+  parentId: null,
+  propItem: null
 },
 components: {
   AgGridVue,
@@ -94,9 +98,13 @@ beforeMount() {
       }
     }
   ]
+
+  if(this.rowDataProps)
+    this.rowData = this.rowDataProps
 },
-async created(){
-  this.getItems();
+async mounted(){
+  if(!this.rowDataProps)
+    this.getItems();
 },
 methods: {
   getItems: function(){
@@ -109,14 +117,20 @@ methods: {
       })    
   },
   newItem: function (){
-    this.item = {};
+    this.item = this.propItem ?? {};
     this.modalTitle = `New ${this.itemName}`;
     this.showModal = true;
   },
   saveItem: function(){
+    this.showModal = false; 
     axios
       .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/store`, this.item)
-      .then(this.getItems());
+      .then(() => {
+        if(this.item.id == 0)
+          this.rowData = [...this.rowData, this.item];
+        else
+          this.rowData = [...this.rowData.filter(m => m.id != this.item.id), this.item];
+      });
   },
   edit: function(e, id){
     this.item = this.rowData.find(x => x.id == id);
@@ -124,9 +138,10 @@ methods: {
     this.showModal = true;
   },
   del: function(e, id){
+    this.showModal = false; 
     axios
       .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/${id}/delete`)
-      .then(this.getItems());
+      .then(this.rowData = [...this.rowData.filter(m => m.id != id)]);
   }
 }
 };
