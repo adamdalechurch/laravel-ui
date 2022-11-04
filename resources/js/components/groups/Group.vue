@@ -1,5 +1,5 @@
 <template>
-  <page :title="group.name">
+  <page :title="group.name" :showHeader="false">
     <template v-slot:backlink>
       <router-link  :to="`/groups/`">
         <i class='fas fa-w fa-arrow-left'></i> Back to Groups
