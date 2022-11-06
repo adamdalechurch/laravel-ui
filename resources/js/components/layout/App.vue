@@ -1,7 +1,7 @@
 <template>
     <!-- Page Wrapper -->
     <div id="wrapper">
-            <navigation></navigation>
+            <navigation :menuOpen="menuOpen"></navigation>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -12,7 +12,7 @@
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <button id="sidebarToggleTop" @click="toggleMenu" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>               
 
@@ -20,7 +20,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
+                    <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-search fa-fw"></i>
@@ -164,14 +164,14 @@
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" @click="toggleMenu" href="#" id="userDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" @click="toggleDropdown" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
                             <img class="img-profile rounded-circle"
                                 src="img/user.png">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div v-if="menuOpen" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        <div v-if="dropdownOpen" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown" style="display:block">
                             <router-link to="/profile" class="dropdown-item">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -219,12 +219,28 @@
         Name: "App",
         data() {
             return {
-                menuOpen: false
+                menuOpen: true,
+                dropdownOpen: false,
+                windowWidth: window.innerWidth
             }
         },
+        mounted() {
+            this.$nextTick(() => {
+                window.addEventListener('resize', this.onResize);
+            })
+
+            this.onResize();
+        },
+
+        beforeDestroy() { 
+            window.removeEventListener('resize', this.onResize); 
+        },
         methods: {
-            toggleMenu (){
+            toggleMenu(){
                 this.menuOpen = !this.menuOpen;
+            },
+            toggleDropdown(){
+                this.dropdownOpen = !this.dropdownOpen;
             },
             logout(){
                 axios
@@ -232,6 +248,13 @@
                 .then(response => {
                     location.reload();
                 })
+            },
+            onResize() {
+                this.windowWidth = window.innerWidth
+                if(this.windowWidth < 786 && this.menuOpen)
+                    this.menuOpen = false;
+                else if(this.windowWidth >= 786)
+                    this.menuOpen = true;
             }
         }
     }
