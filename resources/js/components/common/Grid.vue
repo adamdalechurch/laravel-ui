@@ -102,8 +102,10 @@ async mounted(){
     this.getItems();
 },
 async updated(){
-  if(this.rowDataProps)
+  if(this.rowDataProps){
     this.rowData = this.rowDataProps
+    this.columnDefs = this.columnDefsProp
+  }
 },
 methods: {
   getItems: function(){
