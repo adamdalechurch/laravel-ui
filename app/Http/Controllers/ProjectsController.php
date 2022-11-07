@@ -18,7 +18,7 @@ class ProjectsController extends Controller
     public function show($id)
     {
         return response()->json([
-            'item' =>  Project::where('id', '=', $id)->with('tasks')
+            'item' =>  Project::where('id', '=', $id)->with('tasks')->first()
         ]);
     }
 
