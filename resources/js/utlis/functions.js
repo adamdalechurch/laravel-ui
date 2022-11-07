@@ -1,12 +1,12 @@
 export const CalcPercent = (total, portion, decimalPlaces = 2) =>
 {
-    return ((portion / total) * 100).toFixed(decimalPlaces);
+    let result = ((portion / total) * 100).toFixed(decimalPlaces)
+    return isNaN(result) ? 0 : result;
 }
 
 export const CalcProgressPercent = (items) =>
 {
-    let result = CalcPercent(items.length, GetCompletedItems(items).length, 0);
-    return isNaN(result) ? 0 : result;
+    return CalcPercent(items.length, GetCompletedItems(items).length, 0);
 }
 
 export const GetCompletedItems = (items) =>
