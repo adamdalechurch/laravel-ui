@@ -29,6 +29,7 @@
             title='Projects'
             :rowDataProps="group.projects"
             :propItem="item"
+            :key="1"
           >
             <template v-if="item != null" v-slot="{item}">
               <ProjectForm :item="item" />
@@ -42,6 +43,7 @@
             title='Members'
             :rowDataProps="group.users"
             :propItem="item"
+            :key="2"
           >
             <template v-if="item != null" v-slot="{item}">
               <ProjectForm :item="item" />
