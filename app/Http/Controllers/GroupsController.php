@@ -20,7 +20,11 @@ class GroupsController extends Controller
     public function show($id)
     {
         return response()->json([
-            'item' => Group::where('id', '=', $id)->with('projects')->first()
+            'item' => Group::where('id', '=', $id)
+                ->with('projects')
+                ->with('projects.group')
+                ->with('projects.tasks')
+                ->first()
         ]);
     }
 
