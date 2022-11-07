@@ -5,7 +5,8 @@ export const CalcPercent = (total, portion, decimalPlaces = 2) =>
 
 export const CalcProgressPercent = (items) =>
 {
-    return CalcPercent(items.length, GetCompletedItems(items).length, 0);
+    let result = CalcPercent(items.length, GetCompletedItems(items).length, 0);
+    return isNaN(result) ? 0 : result;
 }
 
 export const GetCompletedItems = (items) =>
