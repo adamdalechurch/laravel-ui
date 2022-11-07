@@ -166,14 +166,14 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" @click="toggleDropdown" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
-                            <img class="img-profile rounded-circle"
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"  id="userDropdownText" >User</span>
+                            <img   id="userDropdownImg"  class="img-profile rounded-circle"
                                 src="img/user.png">
                         </a>
                         <!-- Dropdown - User Information -->
-                        <div v-if="dropdownOpen" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        <div v-if="dropdownOpen"  v-click-outside="dropdownOutsideClick" class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                             aria-labelledby="userDropdown" style="display:block">
-                            <router-link to="/profile" class="dropdown-item">
+                            <router-link to="/profile"   @click.native="dropdownOutsideClick" class="dropdown-item">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </router-link>
@@ -241,6 +241,13 @@
             },
             toggleDropdown(){
                 this.dropdownOpen = !this.dropdownOpen;
+            },
+            dropdownOutsideClick(e){
+                console.log(e.target.id);
+                if (e.target.id && e.target.id.indexOf('userDropdown') > -1)
+                    return false;
+                
+                 this.dropdownOpen = false;
             },
             logout(){
                 axios
