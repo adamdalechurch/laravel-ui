@@ -106,7 +106,7 @@ methods: {
     this.showModal = false; 
     this.rowData = null;
     axios
-      .get(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/`)
+      .get(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/`)
       .then(response => {
           this.rowData = response.data.items;
       })    
@@ -119,7 +119,7 @@ methods: {
   saveItem: function(){
     this.showModal = false; 
     axios
-      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/store`, this.item)
+      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/store`, this.item)
       .then(() => {
         if(this.item.id == 0)
           this.rowData = [...this.rowData, this.item];
@@ -135,7 +135,7 @@ methods: {
   del: function(e, id){
     this.showModal = false; 
     axios
-      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase()}s/${id}/delete`)
+      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/${id}/delete`)
       .then(this.rowData = [...this.rowData.filter(m => m.id != id)]);
   }
 }

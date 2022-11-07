@@ -39,14 +39,14 @@
         <div v-if="membersVisible" class="tab-pane fade show active" id="nav-members" role="tabpanel" aria-labelledby="nav-profile-tab">
           <grid v-if="userCols.length > 0 && membersVisible"
             :columnDefsProp="userCols"
-            itemName='User'
+            itemName='Group Member'
             title='Members'
             :rowDataProps="group.users"
             :propItem="item"
             :key="2"
           >
             <template v-if="item != null" v-slot="{item}">
-              <ProjectForm :item="item" />
+              <GroupUserForm :item="item" />
             </template>
           </grid>
         </div>
@@ -56,6 +56,7 @@
 </template>
 <script>
 import GroupForm from './GroupForm.vue';
+import GroupUserForm from './GroupUserForm.vue';
 import { ProjectCols } from '../projects/ProjectCols';
 import { UserCols } from '../profile/UserCols';
 import ProjectForm from '../projects/ProjectForm';
@@ -85,6 +86,7 @@ export default {
   },
   components: {
     GroupForm,
+    GroupUserForm,
     ProjectForm
   },
   methods: {

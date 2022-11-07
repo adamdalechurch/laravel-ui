@@ -69,4 +69,21 @@ class GroupsController extends Controller
 
         return response('true', 200);
     }
+
+    public function add_user(Request $request)
+    {
+        $group_user = UserGroup::where('group_id', '=', $request->input('group_id'))
+            ->where('user_id', '=', $request->input('user_id'))
+            ->first();
+
+        if(!$group_user)
+        {
+            $group_user = new UserGroup;
+            $group_user->user_id = $request->input('user_id');
+            $group_user->group_id = $request->input('group_id');
+            $group_user->save();
+        }
+
+        return response('true', 200);
+    }
 }
