@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-5 d-none d-lg-block bg-register-image" style='background: url({{env("APP_URL")}}/img/register.jpg); background-size: cover; background-position-x: 35%'></div>
             <div class="col-lg-7">
-                <div class="p-5">
+                <div class="p-2 pt-5">
                     <div class="text-center">
                         <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
                     </div>
