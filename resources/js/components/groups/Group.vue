@@ -23,7 +23,7 @@
           </fieldset>
         </div>
         <div v-if="projectsVisible" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <grid v-if="projectCols.length > 0"
+          <grid v-if="projectCols.length > 0 && projectsVisible"
             :columnDefsProp="projectCols"
             itemName='Project'
             title='Projects'
@@ -35,8 +35,8 @@
             </template>
           </grid>
         </div>
-        <div v-if="membersVisible" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <grid v-if="userCols.length > 0"
+        <div v-if="membersVisible" class="tab-pane fade show active" id="nav-members" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <grid v-if="userCols.length > 0 && membersVisible"
             :columnDefsProp="userCols"
             itemName='User'
             title='Members'
@@ -92,14 +92,14 @@ export default {
       this.membersVisible = false;
     },
     showProjects: function (){
-      this.detailsVisible = false;
       this.projectsVisible = true;
+      this.detailsVisible = false;
       this.membersVisible = false;
     },
     showMembers: function (){
+      this.membersVisible = true;
       this.detailsVisible = false;
       this.projectsVisible = false;
-      this.membersVisible = true;
     },
   }
 }

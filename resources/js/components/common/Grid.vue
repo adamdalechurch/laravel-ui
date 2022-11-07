@@ -101,6 +101,10 @@ async mounted(){
   if(!this.rowDataProps)
     this.getItems();
 },
+async updated(){
+  if(this.rowDataProps)
+    this.rowData = this.rowDataProps
+},
 methods: {
   getItems: function(){
     this.showModal = false; 
