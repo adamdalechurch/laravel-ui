@@ -62,7 +62,7 @@ export default {
     .get(`${process.env.MIX_API_URL}/api/projects/${this.$route.params.id}`)
       .then(response => {
           this.project = response.data.item;
-          this.item = { id: this.project.id};
+          this.item = { project_id: this.project.id};
       }) 
   },
   components: {
