@@ -24,6 +24,7 @@ class GroupsController extends Controller
                 ->with('projects')
                 ->with('projects.group')
                 ->with('projects.tasks')
+                ->with('users')
                 ->first()
         ]);
     }

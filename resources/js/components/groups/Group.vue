@@ -11,22 +11,36 @@
     <template v-slot:body>
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a :class="[baseLinkClass, {'active': detailsVisibile}]"  @click="showDetails" id="nav-details-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
-          <a :class="[baseLinkClass, {'active': projectsVisibile}]"   @click="showProjects" id="nav-projects-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Projects</a>
+          <a :class="[baseLinkClass, {'active': detailsVisible}]"  @click="showDetails" id="nav-details-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
+          <a :class="[baseLinkClass, {'active': projectsVisible}]"   @click="showProjects" id="nav-projects-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Projects</a>
+          <a :class="[baseLinkClass, {'active': membersVisible}]"   @click="showMembers" id="nav-members-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Members</a>
         </div>
       </nav>
       <div class="tab-content" style="padding: 1.25rem" id="nav-tabContent">
-        <div v-if="detailsVisibile" class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div v-if="detailsVisible" class="tab-pane fade show active" id="nav-details" role="tabpanel" aria-labelledby="nav-home-tab">
           <fieldset disabled>
             <GroupForm :item="group"></GroupForm>
           </fieldset>
         </div>
-        <div v-if="projectsVisibile" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div v-if="projectsVisible" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
           <grid v-if="projectCols.length > 0"
             :columnDefsProp="projectCols"
             itemName='Project'
             title='Projects'
             :rowDataProps="group.projects"
+            :propItem="item"
+          >
+            <template v-if="item != null" v-slot="{item}">
+              <ProjectForm :item="item" />
+            </template>
+          </grid>
+        </div>
+        <div v-if="membersVisible" class="tab-pane fade show active" id="nav-projects" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <grid v-if="userCols.length > 0"
+            :columnDefsProp="userCols"
+            itemName='User'
+            title='Members'
+            :rowDataProps="group.users"
             :propItem="item"
           >
             <template v-if="item != null" v-slot="{item}">
@@ -41,6 +55,7 @@
 <script>
 import GroupForm from './GroupForm.vue';
 import { ProjectCols } from '../projects/ProjectCols';
+import { UserCols } from '../profile/UserCols';
 import ProjectForm from '../projects/ProjectForm';
 
 export default {
@@ -49,9 +64,11 @@ export default {
     return {
       group: {},
       item: null,
-      detailsVisibile: true,
-      projectsVisibile: false,
+      detailsVisible: true,
+      membersVisible: false,
+      projectsVisible: false,
       projectCols: ProjectCols,
+      userCols: UserCols,
       baseLinkClass: "nav-item nav-link"
     //  :class="[activeClass, errorClass]"
     }
@@ -70,12 +87,19 @@ export default {
   },
   methods: {
     showDetails: function (){
-      this.detailsVisibile = true;
-      this.projectsVisibile = false;
+      this.detailsVisible = true;
+      this.projectsVisible = false;
+      this.membersVisible = false;
     },
     showProjects: function (){
-      this.detailsVisibile = false;
-      this.projectsVisibile = true;
+      this.detailsVisible = false;
+      this.projectsVisible = true;
+      this.membersVisible = false;
+    },
+    showMembers: function (){
+      this.detailsVisible = false;
+      this.projectsVisible = false;
+      this.membersVisible = true;
     },
   }
 }
