@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="icon" href="{{env('APP_URL')}}/favicon.ico">
+    <link rel="icon" href="{{env('APP_URL')}}/public/favicon.ico">
     <!-- Custom fonts for this template-->
     <link href="css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
