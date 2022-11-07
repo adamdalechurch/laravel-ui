@@ -54,8 +54,12 @@ class GroupsController extends Controller
             $user_group->group_id = $group->id;
             $user_group->save();
         }
-        
-        return response('true', 200);
+
+        return response()->json([
+            'item' => Group::where('id', '=', $group->id)
+                ->with('owner')
+                ->first()
+        ]);
     }
 
     public function delete($id)

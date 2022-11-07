@@ -120,11 +120,12 @@ methods: {
     this.showModal = false; 
     axios
       .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/store`, this.item)
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         if(this.item.id == 0)
-          this.rowData = [...this.rowData, this.item];
+          this.rowData = [...this.rowData, res.data.item];
         else
-          this.rowData = [...this.rowData.filter(m => m.id != this.item.id), this.item];
+          this.rowData = [...this.rowData.filter(m => m.id != this.item.id), res.data.item];
       });
   },
   edit: function(e, id){

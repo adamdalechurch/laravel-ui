@@ -66,8 +66,13 @@ class ProjectsController extends Controller
         // $group_project->project_id = $project->id;
         // $group_project->save();
 
-        return response('true', 200);
-
+       // return response('true', 200);
+       return response()->json([
+            'item' => Project::where('id', '=', $project->id)
+            ->with('group')
+            ->with('tasks')
+            ->first()
+        ]);
     }
 
     public function delete($id)

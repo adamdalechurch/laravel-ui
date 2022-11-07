@@ -69,8 +69,13 @@ class ProjectTasksController extends Controller
         $project_task->status_id = 1;
         $project_task->project_id  = $request->input('project_id');
         $project_task->save();
-
-        return response('true', 200);
+        
+        return response()->json([
+            'item' => ProjectTask::where('id', '=', $project_task->id)
+            ->with('project')
+            ->first()
+        ]);
+        //return response('true', 200);
     }
 
     public function delete($id)
