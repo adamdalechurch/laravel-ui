@@ -1,10 +1,9 @@
 <template>
 <form id="add-form">
   <div class="form-group">
-    <input type="hidden"  v-model="item.group_id" /> 
     <label for="description">User</label>
-    <select v-model="item.user_id" type="hidden" required="required" class="form-control" id="name" aria-describedby="nameHelp">
-      <option v-for="user in users" :value="user.id">{{user.name}}</option>  
+    <select  v-model="item.user_id" type="hidden" required="required" class="form-control" id="name" aria-describedby="nameHelp">
+      <option v-for="user in users" :key="user.id" :value="user.id">{{user.name}}</option>  
     </select>
   </div>
 </form>
@@ -14,13 +13,17 @@ import { GetUsers } from "../profile/UserMethods.js";
 
 export default {
     name: "GroupUserForm",
+    data (){ 
+      return {
+        users: null
+      }
+    },
     props: {
-        item: {},
-        users: []
+      item: {},
     },
     mounted(){
       GetUsers()
-        .then(users => {this.users = users})
+        .then(users => {this.users = users;})
     }
 }
 </script>
