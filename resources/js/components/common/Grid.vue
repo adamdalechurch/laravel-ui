@@ -104,7 +104,18 @@ async mounted(){
 async updated(){
   if(this.rowDataProps){
     this.rowData = this.rowDataProps
-    this.columnDefs = this.columnDefsProp
+    this.columnDefs = [
+    ...this.columnDefsProp,
+    { 
+      headerName: "Actions",
+      flex: 1,
+      cellRenderer: 'ActionCell',
+      cellRendererParams : {
+        edit: this.edit.bind(this),
+        del: this.del.bind(this)
+      }
+    }
+   ]
   }
 },
 methods: {
