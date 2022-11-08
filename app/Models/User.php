@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Group::class, UserGroup::class);
     }
+
+    public function new_notifications()
+    {
+        return $this->hasMany(Notification::class)->whereNull('seen_at');
+    }
 }

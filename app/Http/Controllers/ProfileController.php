@@ -10,7 +10,9 @@ class ProfileController extends Controller
 {
     public function my_profile(){
         return response()->json([
-            'profile' => Auth::user()
+            'profile' => User::where('id', '=', Auth::user()->id)
+                ->with('new_notifications')
+                ->first()
         ]);
     }
 
