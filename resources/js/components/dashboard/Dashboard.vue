@@ -35,7 +35,7 @@
               <!-- Card Body -->
               <div class="card-body">
                   <div class="chart-area">
-                      <GroupsList :groups="dashboard.user.groups" />
+                      <GroupsList :groups="dashboard.groups" />
                   </div>
               </div>
           </div>
@@ -92,6 +92,7 @@ export default {
   data() {
     return {
       dashboard: {
+        groups: [],
         open_tasks: [],
         open_projects: [],
         open_tasks: [],
@@ -113,6 +114,7 @@ export default {
       .get(process.env.MIX_API_URL + '/api/dashboard')
       .then(response => {
         this.dashboard = response.data;
+        console.log(this.dashboard.groups);
       })
   }
 }

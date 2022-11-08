@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Group;
 use App\Models\Project;
 use App\Models\ProjectTask;
 
@@ -17,6 +18,7 @@ class DashboardController extends Controller
     public function get()
     {
         $user          = Auth::user();
+        $groups        = Group::whereIn('id', Auth::user()->groups->pluck('id'))->with('owner')->with('users')->get();
         $projects      = Project::whereIn('group_id', $user->groups->pluck('id'));
         $open_projects = $projects->whereNull('completion_date');
         $tasks         = ProjectTask::whereIn('project_id', $projects->pluck('id'));
@@ -28,6 +30,7 @@ class DashboardController extends Controller
         
         return response()->json([
             'user'                => $user,
+            'groups'              => $groups,
             'open_projects'       => $open_projects->with('tasks')->get(),
             'open_projects_count' => $open_projects->count(),
             'open_tasks'          => $open_tasks->get(),
