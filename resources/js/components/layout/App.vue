@@ -166,7 +166,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" @click="toggleDropdown" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"  id="userDropdownText" >User</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"  id="userDropdownText" >{{name}}</span>
                             <img   id="userDropdownImg"  class="img-profile rounded-circle"
                                 src="img/user.png">
                         </a>
@@ -221,7 +221,8 @@
             return {
                 menuOpen: true,
                 dropdownOpen: false,
-                windowWidth: window.innerWidth
+                windowWidth: window.innerWidth,
+                name: null
             }
         },
         mounted() {
@@ -230,8 +231,12 @@
             })
 
             this.onResize();
+            axios
+                .get(`${process.env.MIX_API_URL}/api/my-profile`)
+                .then(response => {
+                    this.name = response.data.profile.name;
+                }) 
         },
-
         beforeDestroy() { 
             window.removeEventListener('resize', this.onResize); 
         },
