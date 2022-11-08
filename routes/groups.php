@@ -20,3 +20,7 @@ Route::get('/groups/{group_id}/edit', [GroupsController::class, 'edit'])
 
 Route::post('/group/members/store', [GroupsController::class, 'add_user'])
 ->middleware(['auth:sanctum'])->name('add-group-user');
+
+Route::post('/group/members/{id}/delete', [GroupsController::class, 'delete_user'])
+->middleware(['auth:sanctum'])->name('remove-group-user');
+

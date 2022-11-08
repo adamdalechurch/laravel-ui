@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Group;
 use App\Models\UserGroup;
+use App\Models\User;
 
 class GroupsController extends Controller
 {
@@ -87,6 +88,20 @@ class GroupsController extends Controller
             $group_user->group_id = $request->input('group_id');
             $group_user->save();
         }
+
+        return response()->json([
+            'item' => User::where('id', '=', $group_user->user_id)->first()
+        ]);
+    }
+    
+    public function delete_user($id)
+    {
+        $group_user = UserGroup::find($id);
+
+        if($group_user)
+            $group_user->delete();
+        else
+            return response('false', 200);
 
         return response('true', 200);
     }
