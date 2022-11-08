@@ -243,7 +243,6 @@
                 this.dropdownOpen = !this.dropdownOpen;
             },
             dropdownOutsideClick(e){
-                console.log(e.target.id);
                 if (e.target.id && e.target.id.indexOf('userDropdown') > -1)
                     return false;
                 

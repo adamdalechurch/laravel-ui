@@ -39,8 +39,9 @@
         <div v-if="membersVisible" class="tab-pane fade show active" id="nav-members" role="tabpanel" aria-labelledby="nav-profile-tab">
           <grid v-if="userCols.length > 0 && membersVisible"
             :columnDefsProp="userCols"
-            itemName='Group Member'
+            :itemName="`Group ${group.id} Member`"
             title='Members'
+            :showEdit="false"
             :rowDataProps="group.users"
             :propItem="item"
             :key="2"

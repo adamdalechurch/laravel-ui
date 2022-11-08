@@ -21,6 +21,7 @@ class Group extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(User::class, 'user_groups');
+        return $this->belongsToMany(User::class, 'user_groups')
+            ->whereNull('user_groups.deleted_at');
     }
 }

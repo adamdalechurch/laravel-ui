@@ -47,7 +47,7 @@ data() {
     showModal: false,
     modalTitle: null,
     defaultColDef: {
-      editable: true,
+      editable: false,
       enableRowGroup: true,
       enablePivot: true,
       enableValue: true,
@@ -68,7 +68,8 @@ props: {
   rowDataProps: null,
   parentName: null,
   parentId: null,
-  propItem: null
+  propItem: null,
+  showEdit: true
 },
 components: {
   AgGridVue,
@@ -81,6 +82,10 @@ components: {
   UserCell
 },
 beforeMount() {
+  if(this.rowDataProps)
+    this.rowData = this.rowDataProps
+},
+async mounted(){
   this.columnDefs = [
     ...this.columnDefsProp,
     { 
@@ -89,15 +94,12 @@ beforeMount() {
       cellRenderer: 'ActionCell',
       cellRendererParams : {
         edit: this.edit.bind(this),
-        del: this.del.bind(this)
+        del: this.del.bind(this),
+        showEdit: this.showEdit
       }
     }
-  ]
+  ];
 
-  if(this.rowDataProps)
-    this.rowData = this.rowDataProps
-},
-async mounted(){
   if(!this.rowDataProps)
     this.getItems();
 },
@@ -106,22 +108,21 @@ methods: {
     this.showModal = false; 
     this.rowData = null;
     axios
-      .get(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/`)
+      .get(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replaceAll(' ', '/')}s/`)
       .then(response => {
           this.rowData = response.data.items;
       })    
   },
   newItem: function (){
     this.item = this.propItem ?? {};
-    this.modalTitle = `New ${this.itemName}`;
+    this.modalTitle = `New ${this.title}`;
     this.showModal = true;
   },
   saveItem: function(){
     this.showModal = false; 
     axios
-      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/store`, this.item)
+      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replaceAll(' ', '/')}s/store`, this.item)
       .then((res) => {
-        console.log(res);
         if(this.item.id == 0)
           this.rowData = [...this.rowData, res.data.item];
         else
@@ -130,13 +131,13 @@ methods: {
   },
   edit: function(e, id){
     this.item = this.rowData.find(x => x.id == id);
-    this.modalTitle = `Edit ${this.itemName}`;
+    this.modalTitle = `Edit ${this.title}`;
     this.showModal = true;
   },
   del: function(e, id){
     this.showModal = false; 
     axios
-      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replace(' ', '/')}s/${id}/delete`)
+      .post(`${process.env.MIX_API_URL}/api/${this.itemName.toLowerCase().replaceAll(' ', '/')}s/${id}/delete`)
       .then(this.rowData = [...this.rowData.filter(m => m.id != id)]);
   }
 }

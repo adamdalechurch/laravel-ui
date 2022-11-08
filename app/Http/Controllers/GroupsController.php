@@ -94,9 +94,13 @@ class GroupsController extends Controller
         ]);
     }
     
-    public function delete_user($id)
+    public function delete_user($group_id, $user_id)
     {
-        $group_user = UserGroup::find($id);
+        $group_user = UserGroup::where('group_id', '=', $group_id)
+            ->where('user_id', '=', $user_id)
+            ->first();
+        
+        return response(json_encode($group_user), 200);
 
         if($group_user)
             $group_user->delete();
