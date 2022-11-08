@@ -21,10 +21,10 @@ class DashboardController extends Controller
         $open_projects = $projects->whereNull('completion_date');
         $tasks         = ProjectTask::whereIn('project_id', $projects->pluck('id'));
         $open_tasks    = $tasks->whereNull('completion_date');
-        $progress      = 0;// $open_tasks == 0 ? 100 : $tasks->count() / $open_tasks;
+        $progress      = 0;
 
         foreach($open_projects->get() as $project)
-            $progress += $project->progress_percent() / $open_projects->count();
+            $progress += round($project->progress_percent() / $open_projects->count());
         
         return response()->json([
             'user'                => $user,
