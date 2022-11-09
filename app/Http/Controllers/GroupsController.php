@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Group;
 use App\Models\UserGroup;
 use App\Models\User;
+use App\Utils\Notifications;
 
 class GroupsController extends Controller
 {
@@ -87,6 +88,14 @@ class GroupsController extends Controller
             $group_user->user_id = $request->input('user_id');
             $group_user->group_id = $request->input('group_id');
             $group_user->save();
+            
+            (new Notifications)->Add(
+                $group_user->user_id,
+                "New Group",
+                "You have been added to group $group_user->group_id",
+                "info"
+            );
+
         }
 
         return response()->json([
