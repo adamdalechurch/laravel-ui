@@ -89,13 +89,15 @@ class GroupsController extends Controller
             $group_user->group_id = $request->input('group_id');
             $group_user->save();
             
+            $user = User::find($group_user->user_id);
+
             (new Notifications)->Add(
                 $group_user->user_id,
                 "New Group",
                 "You have been added to group $group_user->group_id",
-                "info"
+                "info",
+                $user->email
             );
-
         }
 
         return response()->json([

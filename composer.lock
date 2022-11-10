@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf14086919a839fe740e00554e4baff6",
+    "content-hash": "578c4ccf61a3fb105a761f5428647e6d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5164,6 +5164,44 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "wildbit/postmark-php",
+            "version": "4.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wildbit/postmark-php.git",
+                "reference": "d27cd97a5efefa72d4ea16c2fa307c22c4e5312c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wildbit/postmark-php/zipball/d27cd97a5efefa72d4ea16c2fa307c22c4e5312c",
+                "reference": "d27cd97a5efefa72d4ea16c2fa307c22c4e5312c",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Postmark\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The officially supported client for Postmark (http://postmarkapp.com)",
+            "support": {
+                "issues": "https://github.com/wildbit/postmark-php/issues",
+                "source": "https://github.com/wildbit/postmark-php/tree/4.0.4"
+            },
+            "time": "2022-03-28T18:34:21+00:00"
         }
     ],
     "packages-dev": [
@@ -7455,5 +7493,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
