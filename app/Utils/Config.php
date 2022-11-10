@@ -7,6 +7,7 @@ class Config
     public static $settings = 
     [
         'EMAIL_NOTIFICATIONS' => true,
-        'EMAIL_PROVIDER' => 'Postmark'
+        //'EMAIL_PROVIDER' => 'Postmark'
+        'EMAIL_PROVIDER' => 'SendGrid'
     ];
 }
