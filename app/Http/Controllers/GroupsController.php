@@ -111,8 +111,6 @@ class GroupsController extends Controller
             ->where('user_id', '=', $user_id)
             ->first();
         
-        return response(json_encode($group_user), 200);
-
         if($group_user)
             $group_user->delete();
         else
