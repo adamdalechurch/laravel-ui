@@ -18,10 +18,10 @@ class Notifications
         $notification->type = $type;
         $notification->save();
         
-        if(Config::$settings['EMAIL_NOTIFICATIONS'])
+        if(Config::get('EMAIL_NOTIFICATIONS'))
         {
             try{
-                $client = "\\App\\Email\\" . Config::$settings['EMAIL_PROVIDER'];
+                $client = "\\App\\Email\\" . Config::get('EMAIL_PROVIDER');
 
                 (new $client(
                     'adamdchurch92@gmail.com',

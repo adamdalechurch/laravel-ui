@@ -2,12 +2,20 @@
 
 namespace App\Utils;
 
+use App\Models\Configuration;
+
 class Config
 {
-    public static $settings = 
-    [
-        'EMAIL_NOTIFICATIONS' => true,
-        //'EMAIL_PROVIDER' => 'Postmark'
-        'EMAIL_PROVIDER' => 'SendGrid'
-    ];
+    public static function Get($name)
+    {
+        $config = Configuration::where('name', '=', $name)->first();
+
+        switch($config->type)
+        {
+            case "bool":
+                return $config->value == "true";
+            default:
+                return $config->value;
+        }
+    }
 }
