@@ -25,7 +25,7 @@ class ConfigurationSeeder extends Seeder
         DB::table('configuration')->insert([
             'name' => 'EMAIL_NOTIFICATIONS',
             'display_name' => 'Email Notifications',
-            'value' => 'true',
+            'value' => '1',
             'type' => 'bool',
             'created_at' => date('Y-m-d H:i:s'),
         ]);

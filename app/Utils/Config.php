@@ -13,7 +13,7 @@ class Config
         switch($config->type)
         {
             case "bool":
-                return $config->value == "true";
+                return $config->value == "1";
             default:
                 return $config->value;
         }
