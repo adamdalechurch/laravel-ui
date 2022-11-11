@@ -14,7 +14,7 @@ class ConfigurationSeeder extends Seeder
      */
     public function run()
     {        
-        DB::table('configuration')->insert([
+        DB::table('configurations')->insert([
             'name' => 'ORG_NAME',
             'display_name' => 'Organization Name',
             'value' => 'Projeny Organization',
@@ -22,7 +22,7 @@ class ConfigurationSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        DB::table('configuration')->insert([
+        DB::table('configurations')->insert([
             'name' => 'EMAIL_NOTIFICATIONS',
             'display_name' => 'Email Notifications',
             'value' => '1',
@@ -30,7 +30,7 @@ class ConfigurationSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        DB::table('configuration')->insert([
+        DB::table('configurations')->insert([
             'name' => 'EMAIL_PROVIDER',
             'display_name' => 'Email Provider',
             'value' => 'SendGrid',
