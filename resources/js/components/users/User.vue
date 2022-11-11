@@ -12,7 +12,7 @@
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
           <a :class="[baseLinkClass, {'active': detailsVisibile}]"  @click="showDetails" id="nav-details-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Details</a>
-          <!-- <a :class="[baseLinkClass, {'active': tasksVisibile}]"   @click="showTasks" id="nav-tasks-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Tasks</a> -->
+            <a :class="[baseLinkClass, {'active': groupsVisibile}]"   @click="showGroups" id="nav-groups-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Groups</a>
         </div>
       </nav>
       <div class="tab-content" style="padding: 1.25rem" id="nav-tabContent">
@@ -21,19 +21,22 @@
             <UserForm :item="user"></UserForm>
           </fieldset>
         </div>
-        <!-- <div v-if="tasksVisibile" class="tab-pane fade show active" id="nav-tasks" role="tabpanel" aria-labelledby="nav-profile-tab">
-          <grid v-if="taskCols.length > 0"
-            :columnDefsProp="taskCols"
-            itemName='Task'
-            title='Tasks'
-            :rowDataProps="user.tasks"
+        <div v-if="groupsVisibile" class="tab-pane fade show active" id="nav-groups" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <grid v-if="groupCols.length > 0"
+            :columnDefsProp="groupCols"
+            itemName='Group'
+            title='Groups'
+            :rowDataProps="user.groups"
             :propItem="item"
+            :showEdit="false"
+            :showDelete="false"
+            :showAdd="false"
           >
             <template v-if="item != null" v-slot="{item}">
-              <TaskForm :item="item" />
+              <GroupForm :item="item" />
             </template>
           </grid>
-        </div> -->
+        </div> 
       </div>
     </template>
   </page>
@@ -41,8 +44,8 @@
 <script>
 import UserForm from './UserForm.vue';
 import StatusCell from '../common/StatusCell.vue';
-import { TaskCols } from '../tasks/TaskCols';
-import TaskForm from '../tasks/TaskForm';
+import { GroupCols } from '../groups/GroupCols';
+import GroupForm from '../groups/GroupForm';
 
 export default {
   name: 'User',
@@ -51,8 +54,8 @@ export default {
       user: {},
       item: null,
       detailsVisibile: true,
-      tasksVisibile: false,
-      taskCols: TaskCols,
+      groupsVisibile: false,
+      groupCols: GroupCols,
       baseLinkClass: "nav-item nav-link"
     }
   },
@@ -67,16 +70,16 @@ export default {
   components: {
     UserForm,
     StatusCell,
-    TaskForm
+    GroupForm
   },
   methods: {
     showDetails: function (){
       this.detailsVisibile = true;
-      this.tasksVisibile = false;
+      this.groupsVisibile = false;
     },
-    showTasks: function (){
+    showGroups: function (){
       this.detailsVisibile = false;
-      this.tasksVisibile = true;
+      this.groupsVisibile = true;
     },
   }
 }

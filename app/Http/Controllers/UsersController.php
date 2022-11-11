@@ -27,6 +27,7 @@ class UsersController extends Controller
         return response()->json([
             'item' => User::where('id', '=', $id)
                 ->with('groups')
+                ->with('groups.owner')
                 ->first()
         ]);
     }

@@ -8,7 +8,6 @@
         :showEdit="false"
         :showDelete="false"
         :showAdd="false"
-
       >
       <template v-slot="{item}">
         <UserForm :item="item" />
