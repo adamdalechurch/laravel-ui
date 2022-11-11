@@ -29,5 +29,6 @@ Route::middleware(['auth:sanctum'])->get('/users', [UsersController::class, 'sho
 require __DIR__.'/groups.php';
 require __DIR__.'/projects.php';
 require __DIR__.'/tasks.php';
+require __DIR__.'/users.php';
 
 

@@ -16,9 +16,18 @@ class UsersController extends Controller
         ]);
     }
 
-    public function show(){
+    public function users(){
         return response()->json([
             'items' => User::get()
+        ]);
+    }
+
+    public function show($id)
+    {
+        return response()->json([
+            'item' => User::where('id', '=', $id)
+                ->with('groups')
+                ->first()
         ]);
     }
 }
