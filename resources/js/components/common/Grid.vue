@@ -32,6 +32,7 @@
 <script>
 import { AgGridVue } from "ag-grid-vue";
 import ActionCell from "./ActionCell.vue";
+import ConfigurationValueCell from "../configurations/ConfigurationValueCell.vue";
 import DateCell from "./DateCell.vue";
 import ItemLinkCell from './ItemLinkCell.vue'
 import GroupCell from "../groups/GroupCell.vue";
@@ -76,6 +77,7 @@ props: {
 components: {
   AgGridVue,
   ActionCell,
+  ConfigurationValueCell,
   DateCell,
   GroupCell,
   ItemLinkCell,

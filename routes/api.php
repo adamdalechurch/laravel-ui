@@ -26,6 +26,7 @@ Route::middleware(['auth:sanctum'])->get('/my-profile', [UsersController::class,
 
 Route::middleware(['auth:sanctum'])->get('/users', [UsersController::class, 'show']);
 
+require __DIR__.'/configurations.php';
 require __DIR__.'/groups.php';
 require __DIR__.'/projects.php';
 require __DIR__.'/tasks.php';

@@ -27,6 +27,7 @@ Vue.component('app', require('./components/layout/App.vue').default);
 Vue.component('navigation', require('./components/layout/Navigation.vue').default);
 
 // PAGES:
+Vue.component('configurations', require('./components/configurations/Configurations.vue').default);
 Vue.component('dashboard', require('./components/dashboard/Dashboard.vue').default);
 Vue.component('group', require('./components/groups/Group.vue').default);
 Vue.component('my-groups', require('./components/groups/MyGroups.vue').default);
@@ -49,6 +50,7 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: { template: '<dashboard />' } },
+  { path: '/configurations', component: { template: '<configurations />' } },
   { path: '/groups', component: { template: '<my-groups />' } },
   { path: '/groups/:id', component: { template: '<group />' } },
   { path: '/projects', component: { template: '<my-projects />' } },

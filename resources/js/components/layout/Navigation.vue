@@ -48,6 +48,13 @@
                 <span>Users</span>
             </router-link>
         </li>
+
+        <li class="nav-item">
+            <router-link to="/configurations" class="nav-link">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Configuration</span>
+            </router-link>
+        </li>
     </ul>
 </template>
 <script>
