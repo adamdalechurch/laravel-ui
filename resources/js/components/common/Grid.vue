@@ -72,7 +72,8 @@ props: {
   propItem: null,
   showEdit: true,
   showDelete: true,
-  showAdd: true
+  showAdd: true,
+  showActionCell: true
 },
 components: {
   AgGridVue,
@@ -90,20 +91,24 @@ beforeMount() {
     this.rowData = this.rowDataProps
 },
 async mounted(){
-  this.columnDefs = [
-    ...this.columnDefsProp,
-    { 
-      headerName: "Actions",
-      flex: 1,
-      cellRenderer: 'ActionCell',
-      cellRendererParams : {
-        edit: this.edit.bind(this),
-        del: this.del.bind(this),
-        showEdit: this.showEdit,
-        showDelete: this.showDelete
+  if(this.showActionCell == undefined || this.showActionCell ){
+    this.columnDefs = [
+      ...this.columnDefsProp,
+      { 
+        headerName: "Actions",
+        flex: 1,
+        cellRenderer: 'ActionCell',
+        cellRendererParams : {
+          edit: this.edit.bind(this),
+          del: this.del.bind(this),
+          showEdit: this.showEdit,
+          showDelete: this.showDelete
+        }
       }
-    }
-  ];
+    ];
+  } else{
+    this.columnDefs = this.columnDefsProp;
+  }
 
   if(!this.rowDataProps)
     this.getItems();

@@ -8,6 +8,7 @@
         :showEdit="false"
         :showDelete="false"
         :showAdd="false"
+        :showActionCell="false"
       >
       <template v-slot="{item}">
         <ConfigurationForm :item="item"></ConfigurationForm>

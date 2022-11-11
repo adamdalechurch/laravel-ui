@@ -31,6 +31,7 @@
             :showEdit="false"
             :showDelete="false"
             :showAdd="false"
+            :showActionCell="false"
           >
             <template v-if="item != null" v-slot="{item}">
               <GroupForm :item="item" />
