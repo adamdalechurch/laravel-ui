@@ -13,9 +13,7 @@ class ConfigurationSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        // DB::table('statuses')->truncate();
-        
+    {        
         DB::table('configuration')->insert([
             'name' => 'ORG_NAME',
             'display_name' => 'Organization Name',
@@ -26,7 +24,7 @@ class ConfigurationSeeder extends Seeder
 
         DB::table('configuration')->insert([
             'name' => 'EMAIL_NOTIFICATIONS',
-            'display_name' => 'Email Provider',
+            'display_name' => 'Email Notifications',
             'value' => 'true',
             'type' => 'bool',
             'created_at' => date('Y-m-d H:i:s'),
@@ -39,7 +37,5 @@ class ConfigurationSeeder extends Seeder
             'type' => 'select',
             'created_at' => date('Y-m-d H:i:s'),
         ]);
-
-        
     }
 }
