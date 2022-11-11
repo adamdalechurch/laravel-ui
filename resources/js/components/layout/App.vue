@@ -191,5 +191,6 @@ import Notifications from './Noitifications.vue';
 
 .card-body{
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 </style>
