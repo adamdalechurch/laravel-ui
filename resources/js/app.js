@@ -32,7 +32,7 @@ Vue.component('group', require('./components/groups/Group.vue').default);
 Vue.component('my-groups', require('./components/groups/MyGroups.vue').default);
 Vue.component('my-projects', require('./components/projects/MyProjects.vue').default);
 Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
-Vue.component('my-profile', require('./components/profile/Profile.vue').default);
+Vue.component('my-profile', require('./components/users/Profile.vue').default);
 Vue.component('project', require('./components/projects/Project.vue').default);
 Vue.component('task', require('./components/tasks/Task.vue').default);
 

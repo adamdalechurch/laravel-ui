@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class ProfileController extends Controller
+class UsersController extends Controller
 {
     public function my_profile(){
         return response()->json([
@@ -16,7 +16,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function users(){
+    public function show(){
         return response()->json([
             'items' => User::get()
         ]);

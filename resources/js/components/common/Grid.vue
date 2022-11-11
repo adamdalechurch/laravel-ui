@@ -37,7 +37,7 @@ import ItemLinkCell from './ItemLinkCell.vue'
 import GroupCell from "../groups/GroupCell.vue";
 import ProgressCell from "./ProgressCell.vue";
 import ProjectCell from "../projects/ProjectCell.vue";
-import UserCell from "../profile/UserCell.vue";
+import UserCell from "../users/UserCell.vue";
 
 export default {
 name: "Grid",

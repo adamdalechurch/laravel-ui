@@ -59,7 +59,7 @@
 import GroupForm from './GroupForm.vue';
 import GroupUserForm from './GroupUserForm.vue';
 import { ProjectCols } from '../projects/ProjectCols';
-import { UserCols } from '../profile/UserCols';
+import { UserCols } from '../users/UserCols';
 import ProjectForm from '../projects/ProjectForm';
 
 export default {

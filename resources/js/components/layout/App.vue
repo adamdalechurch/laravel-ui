@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import { GetUsers } from '../profile/UserMethods';
+import { GetUsers } from '../users/UserMethods';
 import Notifications from './Noitifications.vue';
     export default {
         Name: "App",

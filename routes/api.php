@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->get('/dashboard', [DashboardController::class, 'get'])->name('dashboard');
 
-Route::middleware(['auth:sanctum'])->get('/my-profile', [ProfileController::class, 'my_profile']);
+Route::middleware(['auth:sanctum'])->get('/my-profile', [UsersController::class, 'my_profile']);
 
-Route::middleware(['auth:sanctum'])->get('/users', [ProfileController::class, 'users']);
+Route::middleware(['auth:sanctum'])->get('/users', [UsersController::class, 'users']);
 
 require __DIR__.'/groups.php';
 require __DIR__.'/projects.php';

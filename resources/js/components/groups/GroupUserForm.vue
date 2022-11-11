@@ -9,7 +9,7 @@
 </form>
 </template>
 <script>
-import { GetUsers } from "../profile/UserMethods.js";
+import { GetUsers } from "../users/UserMethods.js";
 
 export default {
     name: "GroupUserForm",
