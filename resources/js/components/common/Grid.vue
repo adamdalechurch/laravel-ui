@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button-common  type='button' @click="newItem" style="margin-bottom: 1.25rem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
+    <button-common  v-if="showAdd == undefined || showAdd"  type='button' @click="newItem" style="margin-bottom: 1.25rem"><i class="fas fa-plus fa-sm text-white-50"></i> New {{itemName}}</button-common>
     <div class="table-responsive" style="display: flex; flex-direction: column; height: 100%" v-if="rowData != null">
       <ag-grid-vue style="width: 100%; height: 500px;"
           class="ag-theme-material"
@@ -69,7 +69,9 @@ props: {
   parentName: null,
   parentId: null,
   propItem: null,
-  showEdit: true
+  showEdit: true,
+  showDelete: true,
+  showAdd: true
 },
 components: {
   AgGridVue,
@@ -95,7 +97,8 @@ async mounted(){
       cellRendererParams : {
         edit: this.edit.bind(this),
         del: this.del.bind(this),
-        showEdit: this.showEdit
+        showEdit: this.showEdit,
+        showDelete: this.showDelete
       }
     }
   ];

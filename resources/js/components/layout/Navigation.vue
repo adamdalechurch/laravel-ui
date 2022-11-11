@@ -15,7 +15,6 @@
             My Stuff
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu-->
         <li class="nav-item">
             <router-link to="/groups" class="nav-link">
                 <i class="fas fa-fw fa-users"></i>
@@ -23,19 +22,30 @@
             </router-link>
         </li>
 
-        <!-- Nav Item - Pages Collapse Menu-->
-            <li class="nav-item">
+        <li class="nav-item">
             <router-link to="/projects" class="nav-link">
                 <i class="fas fa-fw fa-edit"></i>
                 <span>My Projects</span>
             </router-link>
         </li>
 
-        <!-- Nav Item - Pages Collapse Menu-->
-            <li class="nav-item">
+        <li class="nav-item">
             <router-link to="/tasks" class="nav-link">
                 <i class="fas fa-fw fa-check-circle"></i>
                 <span>My Tasks</span>
+            </router-link>
+        </li>
+        
+        <!-- Admin -->
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">
+            Admin
+        </div>
+
+        <li class="nav-item">
+            <router-link to="/users" class="nav-link">
+                <i class="fas fa-fw fa-user"></i>
+                <span>Users</span>
             </router-link>
         </li>
     </ul>

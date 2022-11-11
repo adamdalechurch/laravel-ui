@@ -71,19 +71,6 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </router-link>
-                            <!-- <a class="dropdown-item" href="#">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Settings
-                            </a>
-                            <a class="dropdown-item" href="#">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Activity Log
-                            </a>
-                            <div class="dropdown-divider"></div> -->
-                            <!-- <router-link to="/profile" class="dropdown-item">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
-                            </router-link> -->
                            <a class="dropdown-item" @click="logout" href="#" >
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Logout
@@ -109,7 +96,6 @@
 </template>
 
 <script>
-import { GetUsers } from '../users/UserMethods';
 import Notifications from './Noitifications.vue';
     export default {
         Name: "App",

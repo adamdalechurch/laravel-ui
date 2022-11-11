@@ -35,6 +35,7 @@ Vue.component('my-tasks', require('./components/tasks/MyTasks.vue').default);
 Vue.component('my-profile', require('./components/users/Profile.vue').default);
 Vue.component('project', require('./components/projects/Project.vue').default);
 Vue.component('task', require('./components/tasks/Task.vue').default);
+Vue.component('users', require('./components/users/Users.vue').default);
 
 // COMMMON
 Vue.component('button-common', require('./components/common/Button.vue').default);
@@ -54,6 +55,7 @@ const routes = [
   { path: '/tasks', component: { template: '<my-tasks />' } },
   { path: '/tasks/:id', component: { template: '<task />' } },
   { path: '/profile', component: { template: '<my-profile />' } },
+  { path: '/users', component: { template: '<users />' } },
 ]
 
 const router = new VueRouter({
@@ -64,18 +66,18 @@ const app = new Vue({
     router
   }).$mount('#app');
 
-  Vue.directive('click-outside', {
-    bind: function (el, binding, vnode) {
-      el.clickOutsideEvent = function (event) {
-        // here I check that click was outside the el and his children
-        if (!(el == event.target || el.contains(event.target))) {
-          // and if it did, call method provided in attribute value
-          vnode.context[binding.expression](event);
-        }
-      };
-      document.body.addEventListener('click', el.clickOutsideEvent)
-    },
-    unbind: function (el) {
-      document.body.removeEventListener('click', el.clickOutsideEvent)
-    },
-  });
+Vue.directive('click-outside', {
+  bind: function (el, binding, vnode) {
+    el.clickOutsideEvent = function (event) {
+      // here I check that click was outside the el and his children
+      if (!(el == event.target || el.contains(event.target))) {
+        // and if it did, call method provided in attribute value
+        vnode.context[binding.expression](event);
+      }
+    };
+    document.body.addEventListener('click', el.clickOutsideEvent)
+  },
+  unbind: function (el) {
+    document.body.removeEventListener('click', el.clickOutsideEvent)
+  },
+});
